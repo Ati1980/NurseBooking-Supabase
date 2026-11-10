@@ -445,11 +445,18 @@ h1, h2, h3, h4, .font-heading {
 }
 
 /* Weekend cells inside even/odd rows */
-.matrix-row-even td.weekend-cell {
-  background-color: #fee2e2 !important;
+.matrix-row-even td.sunday-cell {
+  background-color: #ffe4e6 !important; /* rose-100 */
 }
-.matrix-row-odd td.weekend-cell {
-  background-color: #fff1f2 !important;
+.matrix-row-odd td.sunday-cell {
+  background-color: #fff1f2 !important; /* rose-50 */
+}
+
+.matrix-row-even td.saturday-cell {
+  background-color: #f3e8ff !important; /* purple-100 */
+}
+.matrix-row-odd td.saturday-cell {
+  background-color: #faf5ff !important; /* purple-50 */
 }
 
 /* Row Hover Highlight across all 31 days and sticky columns */
@@ -457,8 +464,11 @@ h1, h2, h3, h4, .font-heading {
 .matrix-row:hover .matrix-sticky-cell {
   background-color: #dbeafe !important;
 }
-.matrix-row:hover td.weekend-cell {
-  background-color: #bfdbfe !important;
+.matrix-row:hover td.sunday-cell {
+  background-color: #fecdd3 !important; /* rose-200 */
+}
+.matrix-row:hover td.saturday-cell {
+  background-color: #e9d5ff !important; /* purple-200 */
 }
 
 /* Shift Badges */

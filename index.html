@@ -32,20 +32,23 @@
   <!-- Print Header -->
   <div class="print-header hidden">
     <h2 id="printRosterTitle" class="text-xl font-bold text-slate-900">ตารางเวรพยาบาล</h2>
-    <p class="text-xs text-slate-600">เวรเช้า: 08:30 - 16:30 น. | เวรบ่าย: 16:30 - 00:30 น. | เวรดึก: 00:30 - 08:30 น.</p>
+    <p class="text-xs text-slate-600">เวรเช้า: 08:30 - 16:30 น. | เวรบ่าย: 16:30 - 00:30 น. | เวรดึก: 00:30 - 08:30 น.
+    </p>
   </div>
 
   <!-- Main Application Wrapper (pb-24 for Fixed Bottom Navigation Bar) -->
   <div class="relative z-10 max-w-[1760px] mx-auto p-2 sm:p-4 md:p-6 pb-24 md:pb-8 min-h-screen flex flex-col">
 
     <!-- ==================== TOP NAVIGATION HEADER ==================== -->
-    <header class="glass-header rounded-3xl p-4 sm:p-5 mb-4 text-white shadow-lg border border-white/20 backdrop-blur-xl bg-gradient-to-r from-blue-600/90 via-sky-600/90 to-blue-700/90">
+    <header
+      class="glass-header rounded-3xl p-4 sm:p-5 mb-4 text-white shadow-lg border border-white/20 backdrop-blur-xl bg-gradient-to-r from-blue-600/90 via-sky-600/90 to-blue-700/90">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3.5">
 
         <!-- Left: Branding & Mobile Theme Toggle -->
         <div class="flex items-center justify-between w-full md:w-auto">
           <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('dashboard')">
-            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 shadow-sm text-xl sm:text-2xl">
+            <div
+              class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 shadow-sm text-xl sm:text-2xl">
               🏥
             </div>
             <div>
@@ -98,8 +101,10 @@
             <button onclick="handleLogout()"
               class="group flex items-center gap-1.5 px-3 py-2 bg-rose-500/20 hover:bg-rose-500 border border-rose-300/40 hover:border-rose-400 text-rose-100 hover:text-white rounded-2xl text-xs font-black backdrop-blur-md shadow-sm transition-all duration-200 transform hover:scale-105 active:scale-95 cursor-pointer"
               title="ออกจากระบบ (Exit)">
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
               </svg>
               <span id="headerLogoutBtnText" class="hidden sm:inline font-bold">ออก</span>
             </button>
@@ -111,11 +116,12 @@
     </header>
 
     <!-- ==================== CONTAINER 2: MONTH NAVIGATOR + SHORTCUT BUTTONS + REAL-TIME CLOCK ==================== -->
-    <div class="glass-card rounded-2xl p-2.5 sm:p-3.5 mb-4 border border-slate-200/80 dark:border-slate-800 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-md space-y-2.5">
-      
+    <div
+      class="glass-card rounded-2xl p-2.5 sm:p-3.5 mb-4 border border-slate-200/80 dark:border-slate-800 shadow-sm bg-white/80 dark:bg-slate-900/80 backdrop-blur-md space-y-2.5">
+
       <!-- Top Row: Prev/Next Month + ปลั๊กปุ่มลัด 3 ปุ่ม (ปฏิทินหลัก, สรุปตารางเวร, ตารางรวม 14 ท่าน) -->
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-        
+
         <!-- Left: แถบเลือกเดือนและปี -->
         <div class="flex items-center justify-between sm:justify-start gap-1.5 sm:gap-2 w-full lg:w-auto">
           <!-- ปุ่ม Back -->
@@ -123,11 +129,12 @@
             class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-blue-600 dark:text-blue-400 border border-slate-200/90 dark:border-slate-700 shadow-sm hover:shadow transition transform active:scale-90 flex items-center justify-center shrink-0 cursor-pointer"
             title="เดือนก่อนหน้า">
             <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
-          <div class="flex items-center justify-center bg-blue-50/70 dark:bg-slate-800 border border-blue-200/60 dark:border-slate-700 rounded-2xl px-3 py-1.5 gap-2 shadow-2xs flex-1 sm:flex-initial">
+          <div
+            class="flex items-center justify-center bg-blue-50/70 dark:bg-slate-800 border border-blue-200/60 dark:border-slate-700 rounded-2xl px-3 py-1.5 gap-2 shadow-2xs flex-1 sm:flex-initial">
             <span class="text-base sm:text-lg shrink-0">📅</span>
             <select id="monthSelect"
               class="font-black text-slate-800 dark:text-slate-100 bg-transparent border-none outline-none cursor-pointer text-xs sm:text-sm">
@@ -161,7 +168,7 @@
             class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-blue-600 dark:text-blue-400 border border-slate-200/90 dark:border-slate-700 shadow-sm hover:shadow transition transform active:scale-90 flex items-center justify-center shrink-0 cursor-pointer"
             title="เดือนถัดไป">
             <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </div>
@@ -199,7 +206,8 @@
         <div class="text-center font-mono flex items-center gap-1.5 sm:gap-2">
           <span id="realTimeClockDate" class="font-bold text-slate-700 dark:text-slate-200 text-xs sm:text-sm">--</span>
           <span class="text-slate-300 dark:text-slate-600 font-bold">|</span>
-          <span id="realTimeClockTime" class="font-black text-blue-700 dark:text-blue-400 text-xs sm:text-sm">--:--:-- น.</span>
+          <span id="realTimeClockTime" class="font-black text-blue-700 dark:text-blue-400 text-xs sm:text-sm">--:--:--
+            น.</span>
         </div>
       </div>
 
@@ -210,10 +218,12 @@
       class="glass-container rounded-3xl p-2.5 sm:p-5 md:p-8 shadow-2xl border border-white/60 mb-8 flex-1 w-full max-w-full overflow-hidden">
 
       <!-- Dashboard Title Banner -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-200/80 dark:border-slate-800">
+      <div
+        class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-200/80 dark:border-slate-800">
         <div>
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 flex items-center justify-center text-xl border border-blue-200 dark:border-blue-800 shadow-sm">
+            <div
+              class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 flex items-center justify-center text-xl border border-blue-200 dark:border-blue-800 shadow-sm">
               🗓️
             </div>
             <div>
@@ -244,49 +254,67 @@
 
       <!-- 4 Stat Cards Minimal + Animation -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 mb-5">
-        <div class="glass-card p-3 sm:p-4 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 shadow-xs flex items-center gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl sm:text-2xl shrink-0 border border-blue-100 dark:border-blue-900">
+        <div
+          class="glass-card p-3 sm:p-4 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 shadow-xs flex items-center gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
+          <div
+            class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl sm:text-2xl shrink-0 border border-blue-100 dark:border-blue-900">
             📋
           </div>
           <div class="min-w-0">
             <div class="text-[10px] sm:text-xs text-slate-500 font-bold truncate">เวรทั้งหมดในเดือนนี้</div>
-            <div id="dashStatTotal" class="text-lg sm:text-2xl font-black text-slate-900 dark:text-white font-heading tracking-tight">0 เวร</div>
+            <div id="dashStatTotal"
+              class="text-lg sm:text-2xl font-black text-slate-900 dark:text-white font-heading tracking-tight">0 เวร
+            </div>
           </div>
         </div>
 
-        <div class="glass-card p-3 sm:p-4 rounded-2xl border border-rose-200 dark:border-rose-900/50 bg-rose-50/50 dark:bg-rose-950/30 shadow-xs flex items-center gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-rose-500 text-white flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-xs">
+        <div
+          class="glass-card p-3 sm:p-4 rounded-2xl border border-rose-200 dark:border-rose-900/50 bg-rose-50/50 dark:bg-rose-950/30 shadow-xs flex items-center gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
+          <div
+            class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-rose-500 text-white flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-xs">
             🚨
           </div>
           <div class="min-w-0">
-            <div class="text-[10px] sm:text-xs text-rose-700 dark:text-rose-300 font-black truncate">ยังไม่มีคนเลือก</div>
-            <div id="dashStatUnassigned" class="text-lg sm:text-2xl font-black text-rose-600 dark:text-rose-400 font-heading tracking-tight">0 เวร</div>
+            <div class="text-[10px] sm:text-xs text-rose-700 dark:text-rose-300 font-black truncate">ยังไม่มีคนเลือก
+            </div>
+            <div id="dashStatUnassigned"
+              class="text-lg sm:text-2xl font-black text-rose-600 dark:text-rose-400 font-heading tracking-tight">0 เวร
+            </div>
           </div>
         </div>
 
-        <div class="glass-card p-3 sm:p-4 rounded-2xl border border-sky-200 dark:border-sky-900/50 bg-white/90 dark:bg-slate-900/90 shadow-xs flex items-center gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl sm:text-2xl shrink-0 border border-sky-100 dark:border-sky-900">
+        <div
+          class="glass-card p-3 sm:p-4 rounded-2xl border border-sky-200 dark:border-sky-900/50 bg-white/90 dark:bg-slate-900/90 shadow-xs flex items-center gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
+          <div
+            class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl sm:text-2xl shrink-0 border border-sky-100 dark:border-sky-900">
             👥
           </div>
           <div class="min-w-0">
             <div class="text-[10px] sm:text-xs text-slate-500 font-bold truncate">เวรที่มีคนเลือกแล้ว</div>
-            <div id="dashStatAssigned" class="text-lg sm:text-2xl font-black text-sky-950 dark:text-sky-300 font-heading tracking-tight">0 เวร</div>
+            <div id="dashStatAssigned"
+              class="text-lg sm:text-2xl font-black text-sky-950 dark:text-sky-300 font-heading tracking-tight">0 เวร
+            </div>
           </div>
         </div>
 
-        <div class="glass-card p-3 sm:p-4 rounded-2xl border border-emerald-200 dark:border-emerald-900/50 bg-white/90 dark:bg-slate-900/90 shadow-xs flex items-center gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
-          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl sm:text-2xl shrink-0 border border-emerald-100 dark:border-emerald-900">
+        <div
+          class="glass-card p-3 sm:p-4 rounded-2xl border border-emerald-200 dark:border-emerald-900/50 bg-white/90 dark:bg-slate-900/90 shadow-xs flex items-center gap-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
+          <div
+            class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl sm:text-2xl shrink-0 border border-emerald-100 dark:border-emerald-900">
             👩‍⚕️
           </div>
           <div class="min-w-0">
             <div class="text-[10px] sm:text-xs text-slate-500 font-bold truncate">ยอดการเลือกเวรรวม</div>
-            <div id="dashStatBookings" class="text-lg sm:text-2xl font-black text-emerald-800 dark:text-emerald-300 font-heading tracking-tight">0 ครั้ง</div>
+            <div id="dashStatBookings"
+              class="text-lg sm:text-2xl font-black text-emerald-800 dark:text-emerald-300 font-heading tracking-tight">
+              0 ครั้ง</div>
           </div>
         </div>
       </div>
 
       <!-- Quick Legend & Filter Bar -->
-      <div class="flex flex-wrap items-center justify-between gap-3 p-3 sm:p-3.5 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 mb-5 backdrop-blur-sm">
+      <div
+        class="flex flex-wrap items-center justify-between gap-3 p-3 sm:p-3.5 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 mb-5 backdrop-blur-sm">
         <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap" id="dashFilterButtons">
           <span class="text-xs font-bold text-slate-700 dark:text-slate-300 mr-1">กรองแสดง:</span>
           <button onclick="setDashboardFilter('ALL')" id="filterBtnALL"
@@ -325,7 +353,8 @@
 
       <!-- สลับมุมมอง: รายวัน / รายเดือน -->
       <div class="flex items-center justify-between mb-3.5 flex-wrap gap-2">
-        <div class="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1 border border-slate-300/80 dark:border-slate-700 shadow-inner">
+        <div
+          class="inline-flex rounded-xl bg-slate-200/80 dark:bg-slate-800 p-1 border border-slate-300/80 dark:border-slate-700 shadow-inner">
           <button id="calViewDailyBtn" onclick="setCalendarViewMode('daily')"
             class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-700 transition cursor-pointer">
             <span>📑</span>
@@ -365,7 +394,8 @@
 
       <div id="nursePersonalStatsContainer" class="grid grid-cols-2 md:grid-cols-4 gap-3.5 mb-5">
         <div class="glass-card p-3 sm:p-4 rounded-2xl border border-sky-200 shadow-xs flex items-center gap-3">
-          <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-black text-2xl shadow-inner border border-sky-200">
+          <div
+            class="w-12 h-12 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-black text-2xl shadow-inner border border-sky-200">
             ☀️
           </div>
           <div>
@@ -375,7 +405,8 @@
         </div>
 
         <div class="glass-card p-3 sm:p-4 rounded-2xl border border-amber-200 shadow-xs flex items-center gap-3">
-          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-black text-2xl shadow-inner border border-amber-200">
+          <div
+            class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-black text-2xl shadow-inner border border-amber-200">
             ⛅
           </div>
           <div>
@@ -384,8 +415,10 @@
           </div>
         </div>
 
-        <div id="nurseStatNCard" class="glass-card p-3 sm:p-4 rounded-2xl border border-purple-200 shadow-xs flex items-center gap-3">
-          <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-black text-2xl shadow-inner border border-purple-200">
+        <div id="nurseStatNCard"
+          class="glass-card p-3 sm:p-4 rounded-2xl border border-purple-200 shadow-xs flex items-center gap-3">
+          <div
+            class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-black text-2xl shadow-inner border border-purple-200">
             🌙
           </div>
           <div>
@@ -395,25 +428,29 @@
         </div>
 
         <div class="glass-card p-3 sm:p-4 rounded-2xl border border-blue-200 shadow-xs flex items-center gap-3">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-black text-2xl shadow-inner border border-blue-200">
+          <div
+            class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-black text-2xl shadow-inner border border-blue-200">
             ⏱️
           </div>
           <div>
             <div class="text-[10px] sm:text-xs text-slate-500 font-bold">รวมเวร / ชั่วโมง</div>
-            <div id="nurseStatTotal" class="text-xl sm:text-2xl font-black text-blue-950 font-heading">0 เวร (0 ชม.)</div>
+            <div id="nurseStatTotal" class="text-xl sm:text-2xl font-black text-blue-950 font-heading">0 เวร (0 ชม.)
+            </div>
           </div>
         </div>
       </div>
 
       <div class="glass-card p-3 sm:p-5 md:p-6 rounded-3xl border border-blue-200 shadow-sm mb-8">
         <div class="w-full">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-slate-100 gap-3">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-slate-100 gap-3">
             <div>
               <h3 class="text-lg sm:text-xl font-black text-blue-950 font-heading flex items-center gap-2">
                 <span class="text-2xl">📅</span>
                 <span id="nurseCalendarSectionTitle">ตารางเวรประจำเดือนของฉัน (My Duty Calendar)</span>
               </h3>
-              <p class="text-xs text-slate-500 mt-0.5">แสดงเฉพาะเวรที่คุณเลือกเข้าเวร (คลิกที่ช่องวันที่เพื่อเลือกหรือปรับเปลี่ยนเวรของคุณ)</p>
+              <p class="text-xs text-slate-500 mt-0.5">แสดงเฉพาะเวรที่คุณเลือกเข้าเวร
+                (คลิกที่ช่องวันที่เพื่อเลือกหรือปรับเปลี่ยนเวรของคุณ)</p>
             </div>
             <div class="flex items-center gap-2 flex-wrap">
               <button onclick="switchView('dashboard')"
@@ -432,7 +469,7 @@
               <button id="submitNurseBookingBtn" onclick="openBookingSummaryModal()"
                 class="relative px-5 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-emerald-500 via-teal-600 to-emerald-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-2xl text-sm sm:text-base font-black shadow-lg shadow-emerald-500/30 border-2 border-emerald-300/40 transition-all duration-200 transform hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer ring-2 ring-emerald-400/20">
                 <!-- Badge แจ้งเตือนสีแดงใหญ่เด่นชัด -->
-                <span id="submitBtnPendingBadge" 
+                <span id="submitBtnPendingBadge"
                   class="hidden absolute -top-3 -right-2.5 min-w-[28px] h-7 px-1.5 bg-gradient-to-r from-rose-600 to-red-600 text-white text-xs sm:text-sm font-black rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 shadow-md shadow-rose-600/50 animate-bounce z-20">
                   0
                 </span>
@@ -455,7 +492,8 @@
       style="display: none;">
       <div class="flex items-center justify-between pb-3.5 border-b border-slate-200 flex-wrap gap-3">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center font-bold text-xl shadow-md border border-white/20">
+          <div
+            class="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white flex items-center justify-center font-bold text-xl shadow-md border border-white/20">
             📑
           </div>
           <div>
@@ -500,16 +538,20 @@
       class="glass-container rounded-3xl overflow-hidden shadow-2xl border border-white/60 mb-8 hidden flex-1 flex-col"
       style="display: none;">
 
-      <div id="adminControlsSection" class="p-4 md:p-5 bg-slate-100/90 border-b border-slate-200 space-y-3.5 backdrop-blur-md">
+      <div id="adminControlsSection"
+        class="p-4 md:p-5 bg-slate-100/90 border-b border-slate-200 space-y-3.5 backdrop-blur-md">
         <div class="flex items-center justify-between pb-3 border-b border-slate-200 flex-wrap gap-3">
           <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-indigo-950 to-blue-900 text-white flex items-center justify-center font-bold text-lg shadow-md border border-white/20">
+            <div
+              class="w-9 h-9 rounded-2xl bg-gradient-to-br from-indigo-950 to-blue-900 text-white flex items-center justify-center font-bold text-lg shadow-md border border-white/20">
               🛡️
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <h2 class="text-sm md:text-base font-black text-slate-900 font-heading">พื้นที่ผู้ดูแลระบบ (Admin Portal)</h2>
-                <span class="text-[10px] font-black bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+                <h2 class="text-sm md:text-base font-black text-slate-900 font-heading">พื้นที่ผู้ดูแลระบบ (Admin
+                  Portal)</h2>
+                <span
+                  class="text-[10px] font-black bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded-full flex items-center gap-1">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span>กำลังใช้งาน</span>
                 </span>
@@ -534,22 +576,28 @@
 
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5">
           <div class="inline-flex rounded-xl border border-slate-200 bg-white p-1 shadow-xs flex-wrap">
-            <button id="viewMatrixBtn" class="px-3 py-1 rounded-lg text-xs font-bold bg-blue-700 text-white shadow-xs transition">
+            <button id="viewMatrixBtn"
+              class="px-3 py-1 rounded-lg text-xs font-bold bg-blue-700 text-white shadow-xs transition">
               ตารางรวม 14 ท่าน (Matrix)
             </button>
-            <button id="viewExcelBtn" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition">
+            <button id="viewExcelBtn"
+              class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition">
               📋 สรุปตารางเวร
             </button>
-            <button id="viewDailyBtn" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition">
+            <button id="viewDailyBtn"
+              class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition">
               ปฏิทินรายวัน
             </button>
-            <button id="viewSummaryBtn" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition">
+            <button id="viewSummaryBtn"
+              class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition">
               สรุปชั่วโมงเวร
             </button>
-            <button id="viewVacanciesBtn" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-rose-700 transition">
+            <button id="viewVacanciesBtn"
+              class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-rose-700 transition">
               ⚠️ ตรวจสอบเวรที่ขาด
             </button>
-            <button id="viewChartBtn" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition">
+            <button id="viewChartBtn"
+              class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition">
               📈 กราฟสรุปจำนวนเข้าเวร
             </button>
           </div>
@@ -570,7 +618,8 @@
               <span>👩‍⚕️</span>
               <span>รายชื่อพยาบาล</span>
             </button>
-            <button id="openBookingModalBtn" class="flex items-center gap-1 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-xs transition">
+            <button id="openBookingModalBtn"
+              class="flex items-center gap-1 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-xs transition">
               <span>+ จองเวร</span>
             </button>
             <button id="adminRefreshBtn" onclick="handleAdminRefresh()"
@@ -583,10 +632,12 @@
               <span>📥</span>
               <span>ดึงข้อมูลจองเดิม</span>
             </button>
-            <button id="exportExcelBtn" class="flex items-center gap-1 px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 rounded-xl text-xs font-bold shadow-xs transition">
+            <button id="exportExcelBtn"
+              class="flex items-center gap-1 px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 rounded-xl text-xs font-bold shadow-xs transition">
               <span>📊 ส่งออก Excel</span>
             </button>
-            <button id="printBtn" class="flex items-center gap-1 px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 rounded-xl text-xs font-bold shadow-xs transition">
+            <button id="printBtn"
+              class="flex items-center gap-1 px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 rounded-xl text-xs font-bold shadow-xs transition">
               <span>🖨️ พิมพ์ A4</span>
             </button>
             <button id="resetMonthBtn" onclick="handleResetMonth()"
@@ -599,19 +650,28 @@
 
         <!-- Shift Mode Switcher -->
         <div class="flex items-center justify-between text-xs pt-1 flex-wrap gap-2">
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 flex-wrap">
             <span class="font-bold text-slate-700 dark:text-slate-300">⚙️ โหมดจัดเวร:</span>
-            <div class="inline-flex rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 p-0.5">
-              <button id="mode2ShiftBtn" onclick="setShiftMode(2)" class="px-2.5 py-0.5 rounded-lg text-xs font-bold transition">
+            <div
+              class="inline-flex rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 p-0.5 shadow-2xs">
+              <button id="mode2ShiftBtn" type="button" onclick="setShiftMode(2)"
+                class="px-2.5 py-1 rounded-lg text-xs font-bold transition cursor-pointer">
                 ☀️⛅ 2 เวร/วัน
               </button>
-              <button id="mode3ShiftBtn" onclick="setShiftMode(3)" class="px-2.5 py-0.5 rounded-lg text-xs font-bold transition">
+              <button id="mode3ShiftBtn" type="button" onclick="setShiftMode(3)"
+                class="px-2.5 py-1 rounded-lg text-xs font-bold transition cursor-pointer">
                 ☀️⛅🌙 3 เวร/วัน
+              </button>
+              <!-- ปุ่ม Custom ที่เพิ่มใหม่ -->
+              <button id="modeCustomShiftBtn" type="button" onclick="openCustomShiftModal()"
+                class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer">
+                <span>🛠️</span>
+                <span id="customShiftBtnText">Custom เวร</span>
               </button>
             </div>
           </div>
 
-          <!-- วางปุ่ม ยืนยันจองตารางเวร แทนข้อความเดิม -->
+          <!-- วางปุ่ม ยืนยันจองตารางเวร -->
           <button id="adminSubmitRosterBtn" onclick="handleAdminSubmitRoster()"
             class="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 hover:from-emerald-700 hover:to-teal-800 text-white rounded-xl text-xs font-black shadow-md shadow-emerald-700/30 border border-emerald-400/40 transition-all duration-200 transform hover:scale-105 active:scale-95 cursor-pointer">
             <span class="text-sm">💾</span>
@@ -619,73 +679,82 @@
           </button>
         </div>
 
-      <!-- Master Views Section -->
-      <div id="masterMatrixSection">
-        <div id="matrixViewSection" class="relative overflow-x-auto border-b border-slate-200">
-          <table class="w-full text-xs text-left border-collapse">
-            <thead class="bg-slate-100 text-slate-700 uppercase tracking-wider font-semibold border-b border-slate-200 sticky top-0 z-30" id="matrixHeader"></thead>
-            <tbody class="divide-y divide-slate-200" id="matrixBody"></tbody>
-            <tfoot class="bg-slate-100 font-semibold border-t-2 border-slate-300 text-slate-800" id="matrixFooter"></tfoot>
-          </table>
-        </div>
+        <!-- Master Views Section -->
+        <div id="masterMatrixSection">
+          <div id="matrixViewSection" class="relative overflow-x-auto border-b border-slate-200">
+            <table class="w-full text-xs text-left border-collapse">
+              <thead
+                class="bg-slate-100 text-slate-700 uppercase tracking-wider font-semibold border-b border-slate-200 sticky top-0 z-30"
+                id="matrixHeader"></thead>
+              <tbody class="divide-y divide-slate-200" id="matrixBody"></tbody>
+              <tfoot class="bg-slate-100 font-semibold border-t-2 border-slate-300 text-slate-800" id="matrixFooter">
+              </tfoot>
+            </table>
+          </div>
 
-        <div id="excelViewSection" class="hidden p-4 sm:p-6 bg-slate-50/50 space-y-4">
-          <div id="excelRosterContainer"></div>
-        </div>
+          <div id="excelViewSection" class="hidden p-4 sm:p-6 bg-slate-50/50 space-y-4">
+            <div id="excelRosterContainer"></div>
+          </div>
 
-        <div id="dailyViewSection" class="hidden p-4 sm:p-6 bg-slate-50/50">
-          <h3 class="text-base font-black text-slate-800 mb-3 font-heading">ตารางพยาบาลเข้าเวรรายวัน (Daily View)</h3>
-          <div id="dailyCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5"></div>
-        </div>
-
-        <div id="summaryViewSection" class="hidden p-4 sm:p-6 bg-slate-50/50 space-y-4">
-          <div id="summaryNurseCardsContainer"></div>
-          <div>
-            <h3 class="text-base font-black text-slate-800 mb-3 font-heading">สรุปสถิติจำนวนเวรและชั่วโมงการทำงาน</h3>
-            <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs bg-white">
-              <table class="min-w-full divide-y divide-slate-200 text-sm">
-                <thead class="bg-slate-50 font-semibold text-slate-700">
-                  <tr>
-                    <th class="py-2.5 px-3 text-center">หมายเลข</th>
-                    <th class="py-2.5 px-3 text-left">รหัส</th>
-                    <th class="py-2.5 px-3 text-left">ชื่อ - สกุล</th>
-                    <th class="py-2.5 px-3 text-center bg-sky-50 text-sky-800">เวรเช้า (ครั้ง)</th>
-                    <th class="py-2.5 px-3 text-center bg-amber-50 text-amber-800">เวรบ่าย (ครั้ง)</th>
-                    <th id="summaryColNHead" class="py-2.5 px-3 text-center bg-purple-50 text-purple-800">เวรดึก (ครั้ง)</th>
-                    <th class="py-2.5 px-3 text-center bg-blue-50 text-blue-900 font-bold">รวมเวร</th>
-                    <th class="py-2.5 px-3 text-center bg-emerald-50 text-emerald-900 font-bold">รวมชั่วโมง</th>
-                  </tr>
-                </thead>
-                <tbody id="summaryTableBody" class="divide-y divide-slate-200 bg-white"></tbody>
-              </table>
+          <div id="dailyViewSection" class="hidden p-4 sm:p-6 bg-slate-50/50">
+            <h3 class="text-base font-black text-slate-800 mb-3 font-heading">ตารางพยาบาลเข้าเวรรายวัน (Daily View)</h3>
+            <div id="dailyCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
             </div>
           </div>
-        </div>
 
-        <div id="vacanciesViewSection" class="hidden p-4 sm:p-6 bg-slate-50/50">
-          <h3 class="text-base font-black text-slate-800 mb-3 font-heading">รายงานตรวจสอบเวรที่ยังขาดคน (Shift Vacancy Report)</h3>
-          <div id="adminVacanciesList"></div>
-        </div>
-
-        <div id="chartViewSection" class="hidden p-4 sm:p-6 bg-slate-50/70 space-y-4">
-          <div class="glass-card rounded-2xl p-4 border border-white/80 shadow-xs flex flex-col xl:flex-row xl:items-center justify-between gap-3">
-            <div class="flex items-center gap-2.5">
-              <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center text-lg font-bold shadow-sm">
-                📊
-              </div>
-              <div>
-                <h3 class="text-sm md:text-base font-black text-slate-900 font-heading">ศูนย์วิเคราะห์และสถิติตารางเวร</h3>
-                <p class="text-xs text-slate-500">วิเคราะห์สถิติเวรพยาบาลทั้งแผนก</p>
+          <div id="summaryViewSection" class="hidden p-4 sm:p-6 bg-slate-50/50 space-y-4">
+            <div id="summaryNurseCardsContainer"></div>
+            <div>
+              <h3 class="text-base font-black text-slate-800 mb-3 font-heading">สรุปสถิติจำนวนเวรและชั่วโมงการทำงาน</h3>
+              <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs bg-white">
+                <table class="min-w-full divide-y divide-slate-200 text-sm">
+                  <thead class="bg-slate-50 font-semibold text-slate-700">
+                    <tr>
+                      <th class="py-2.5 px-3 text-center">หมายเลข</th>
+                      <th class="py-2.5 px-3 text-left">รหัส</th>
+                      <th class="py-2.5 px-3 text-left">ชื่อ - สกุล</th>
+                      <th class="py-2.5 px-3 text-center bg-sky-50 text-sky-800">เวรเช้า (ครั้ง)</th>
+                      <th class="py-2.5 px-3 text-center bg-amber-50 text-amber-800">เวรบ่าย (ครั้ง)</th>
+                      <th id="summaryColNHead" class="py-2.5 px-3 text-center bg-purple-50 text-purple-800">เวรดึก
+                        (ครั้ง)</th>
+                      <th class="py-2.5 px-3 text-center bg-blue-50 text-blue-900 font-bold">รวมเวร</th>
+                      <th class="py-2.5 px-3 text-center bg-emerald-50 text-emerald-900 font-bold">รวมชั่วโมง</th>
+                    </tr>
+                  </thead>
+                  <tbody id="summaryTableBody" class="divide-y divide-slate-200 bg-white"></tbody>
+                </table>
               </div>
             </div>
           </div>
-          <div class="glass-card rounded-3xl p-4 sm:p-6 border border-white/80 shadow-md">
-            <div class="relative w-full h-[350px] md:h-[400px]">
-              <canvas id="dutyChartCanvas"></canvas>
+
+          <div id="vacanciesViewSection" class="hidden p-4 sm:p-6 bg-slate-50/50">
+            <h3 class="text-base font-black text-slate-800 mb-3 font-heading">รายงานตรวจสอบเวรที่ยังขาดคน (Shift Vacancy
+              Report)</h3>
+            <div id="adminVacanciesList"></div>
+          </div>
+
+          <div id="chartViewSection" class="hidden p-4 sm:p-6 bg-slate-50/70 space-y-4">
+            <div
+              class="glass-card rounded-2xl p-4 border border-white/80 shadow-xs flex flex-col xl:flex-row xl:items-center justify-between gap-3">
+              <div class="flex items-center gap-2.5">
+                <div
+                  class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center text-lg font-bold shadow-sm">
+                  📊
+                </div>
+                <div>
+                  <h3 class="text-sm md:text-base font-black text-slate-900 font-heading">ศูนย์วิเคราะห์และสถิติตารางเวร
+                  </h3>
+                  <p class="text-xs text-slate-500">วิเคราะห์สถิติเวรพยาบาลทั้งแผนก</p>
+                </div>
+              </div>
+            </div>
+            <div class="glass-card rounded-3xl p-4 sm:p-6 border border-white/80 shadow-md">
+              <div class="relative w-full h-[350px] md:h-[400px]">
+                <canvas id="dutyChartCanvas"></canvas>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
     </section>
 
@@ -696,13 +765,15 @@
   <!-- ==================== 1. NURSE LOGIN MODAL (REDESIGNED) ==================== -->
   <div id="nurseLoginModal"
     class="fixed inset-0 bg-slate-950/75 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 sm:p-6 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[95vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 sm:p-6 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[95vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
       <!-- Header -->
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3.5">
         <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 to-sky-600 text-white flex items-center justify-center text-xl font-bold shadow-md shadow-sky-500/20 border border-white/30">
+          <div
+            class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 to-sky-600 text-white flex items-center justify-center text-xl font-bold shadow-md shadow-sky-500/20 border border-white/30">
             👩‍⚕️
           </div>
           <div>
@@ -710,39 +781,51 @@
             <p class="text-[11px] text-slate-500 dark:text-slate-400">สำหรับพยาบาลวิชาชีพ</p>
           </div>
         </div>
-        <button onclick="closeNurseLoginModal()" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <button onclick="closeNurseLoginModal()"
+          class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
-      <div id="nurseLoginTargetBanner" class="hidden p-2.5 rounded-2xl bg-blue-50 dark:bg-blue-950/50 border border-blue-200 text-xs text-blue-900 dark:text-blue-200 mb-3 font-semibold"></div>
+      <div id="nurseLoginTargetBanner"
+        class="hidden p-2.5 rounded-2xl bg-blue-50 dark:bg-blue-950/50 border border-blue-200 text-xs text-blue-900 dark:text-blue-200 mb-3 font-semibold">
+      </div>
 
       <form id="modalNurseLoginForm" onsubmit="event.preventDefault();" class="space-y-3.5">
         <!-- การ์ดแสดงพยาบาลที่เลือก พร้อมปุ่มเลือกสีสันชัดเจน -->
         <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">ผู้เข้าใช้งาน (พยาบาล)</label>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">ผู้เข้าใช้งาน
+            (พยาบาล)</label>
           <div class="relative">
             <!-- Custom Visual Nurse Selector Card -->
             <div id="nurseSelectedCard" onclick="toggleNurseListDropdown()"
               class="w-full flex items-center justify-between p-2.5 rounded-2xl border-2 border-blue-200 dark:border-slate-700 bg-blue-50/50 dark:bg-slate-800/80 cursor-pointer shadow-sm hover:border-blue-400 transition-all">
               <div class="flex items-center gap-2.5 min-w-0">
-                <span id="nurseBadgeNum" class="w-7 h-7 rounded-xl text-xs font-black text-white flex items-center justify-center shrink-0 shadow-sm" style="background-color: #c026d3;">1</span>
+                <span id="nurseBadgeNum"
+                  class="w-7 h-7 rounded-xl text-xs font-black text-white flex items-center justify-center shrink-0 shadow-sm"
+                  style="background-color: #c026d3;">1</span>
                 <div class="truncate">
-                  <div id="nurseBadgeName" class="text-xs font-black text-slate-800 dark:text-slate-100 truncate">น.ส.ภิญญดา คำผาเชื้อ</div>
+                  <div id="nurseBadgeName" class="text-xs font-black text-slate-800 dark:text-slate-100 truncate">
+                    น.ส.ภิญญดา คำผาเชื้อ</div>
                   <div id="nurseBadgeId" class="text-[10px] font-mono text-slate-400 font-bold">6100001</div>
                 </div>
               </div>
               <span class="text-xs text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1 shrink-0">
                 <span>เปลี่ยน</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
               </span>
             </div>
 
             <!-- กล่อง Dropdown รายชื่อพยาบาลพร้อมสีและลำดับเด่นชัด -->
-            <div id="nurseListDropdown" class="hidden absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl max-h-56 overflow-y-auto z-30 p-1.5 space-y-1">
+            <div id="nurseListDropdown"
+              class="hidden absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl max-h-56 overflow-y-auto z-30 p-1.5 space-y-1">
               <!-- รายชื่อพยาบาลจะถูกสร้างอัตโนมัติจาก app.js -->
             </div>
-            
+
             <input type="hidden" id="modalLoginNurseIdSelect" value="6100001">
           </div>
         </div>
@@ -751,47 +834,68 @@
         <div>
           <div class="flex items-center justify-between mb-1.5">
             <label class="text-xs font-bold text-slate-700 dark:text-slate-300">กดรหัสผ่าน PIN 4 หลัก</label>
-            <span id="pinLengthStatus" class="text-[10px] font-mono font-black text-blue-600 dark:text-blue-400">0 / 4</span>
+            <span id="pinLengthStatus" class="text-[10px] font-mono font-black text-blue-600 dark:text-blue-400">0 /
+              4</span>
           </div>
-          
+
           <input type="password" id="modalLoginNursePin" maxlength="4" class="sr-only">
 
           <!-- กล่องจุดไฟสถานะ PIN 4 ดวง -->
-          <div class="flex items-center justify-center gap-4 py-3 px-4 rounded-2xl bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 shadow-inner">
-            <div id="pinDot0" class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200"></div>
-            <div id="pinDot1" class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200"></div>
-            <div id="pinDot2" class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200"></div>
-            <div id="pinDot3" class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200"></div>
+          <div
+            class="flex items-center justify-center gap-4 py-3 px-4 rounded-2xl bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 shadow-inner">
+            <div id="pinDot0"
+              class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200">
+            </div>
+            <div id="pinDot1"
+              class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200">
+            </div>
+            <div id="pinDot2"
+              class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200">
+            </div>
+            <div id="pinDot3"
+              class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200">
+            </div>
           </div>
         </div>
 
         <!-- แผงปุ่มกดตัวเลขเสมือนเครื่องคิดเลข: ตัวเลขใหญ่ขึ้น, C สีแดงกุหลาบ, Back สีส้มอำพัน -->
         <div class="grid grid-cols-3 gap-2 pt-1">
-          <button type="button" onclick="pressKeypad('1')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">1</button>
-          <button type="button" onclick="pressKeypad('2')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">2</button>
-          <button type="button" onclick="pressKeypad('3')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">3</button>
+          <button type="button" onclick="pressKeypad('1')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">1</button>
+          <button type="button" onclick="pressKeypad('2')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">2</button>
+          <button type="button" onclick="pressKeypad('3')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">3</button>
 
-          <button type="button" onclick="pressKeypad('4')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">4</button>
-          <button type="button" onclick="pressKeypad('5')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">5</button>
-          <button type="button" onclick="pressKeypad('6')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">6</button>
+          <button type="button" onclick="pressKeypad('4')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">4</button>
+          <button type="button" onclick="pressKeypad('5')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">5</button>
+          <button type="button" onclick="pressKeypad('6')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">6</button>
 
-          <button type="button" onclick="pressKeypad('7')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">7</button>
-          <button type="button" onclick="pressKeypad('8')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">8</button>
-          <button type="button" onclick="pressKeypad('9')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">9</button>
+          <button type="button" onclick="pressKeypad('7')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">7</button>
+          <button type="button" onclick="pressKeypad('8')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">8</button>
+          <button type="button" onclick="pressKeypad('9')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">9</button>
 
           <!-- ปุ่ม C: Font สีแดงกุหลาบใหญ่ชัดเจน -->
           <button type="button" onclick="clearKeypadPin()"
             class="h-14 rounded-2xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 font-black text-2xl border border-rose-200 dark:border-rose-900/50 shadow-sm active:scale-95 transition-all flex items-center justify-center">
             C
           </button>
-          
-          <button type="button" onclick="pressKeypad('0')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">0</button>
+
+          <button type="button" onclick="pressKeypad('0')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">0</button>
 
           <!-- ปุ่ม Backspace: Font และไอคอนสีส้มอำพันใหญ่เด่นชัด -->
           <button type="button" onclick="backspaceKeypadPin()"
             class="h-14 rounded-2xl bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 font-black text-2xl border border-amber-200 dark:border-amber-900/50 shadow-sm active:scale-95 transition-all flex items-center justify-center">
             <svg class="w-6 h-6 stroke-[2.4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414-6.414a2 2 0 011.414-.586H19a2 2 0 012 2v10a2 2 0 01-2 2h-8.172a2 2 0 01-1.414-.586L3 12z"/>
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414-6.414a2 2 0 011.414-.586H19a2 2 0 012 2v10a2 2 0 01-2 2h-8.172a2 2 0 01-1.414-.586L3 12z" />
             </svg>
           </button>
         </div>
@@ -802,12 +906,14 @@
   <!-- ==================== 2. ADMIN LOGIN MODAL (REDESIGNED) ==================== -->
   <div id="adminLoginModal"
     class="fixed inset-0 bg-slate-950/75 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 sm:p-6 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[95vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 sm:p-6 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[95vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3.5">
         <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-700 to-slate-900 text-white flex items-center justify-center text-xl font-bold shadow-md shadow-indigo-900/30 border border-white/30">
+          <div
+            class="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-700 to-slate-900 text-white flex items-center justify-center text-xl font-bold shadow-md shadow-indigo-900/30 border border-white/30">
             🛡️
           </div>
           <div>
@@ -815,8 +921,11 @@
             <p class="text-[11px] text-slate-500 dark:text-slate-400">สำหรับผู้ดูแลระบบตารางเวร</p>
           </div>
         </div>
-        <button onclick="closeAdminLoginModal()" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <button onclick="closeAdminLoginModal()"
+          class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
@@ -824,45 +933,66 @@
         <div>
           <div class="flex items-center justify-between mb-1.5">
             <label class="text-xs font-bold text-slate-700 dark:text-slate-300">รหัสผ่าน Admin (PIN 4 หลัก)</label>
-            <span id="adminPinLengthStatus" class="text-[10px] font-mono font-black text-indigo-600 dark:text-indigo-400">0 / 4</span>
+            <span id="adminPinLengthStatus"
+              class="text-[10px] font-mono font-black text-indigo-600 dark:text-indigo-400">0 / 4</span>
           </div>
-          
+
           <input type="password" id="modalAdminPasswordOnly" maxlength="4" class="sr-only">
 
-          <div class="flex items-center justify-center gap-4 py-3.5 px-4 rounded-2xl bg-indigo-50/70 dark:bg-slate-800/90 border border-indigo-100 dark:border-slate-700/80 shadow-inner">
-            <div id="adminPinDot0" class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200"></div>
-            <div id="adminPinDot1" class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200"></div>
-            <div id="adminPinDot2" class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200"></div>
-            <div id="adminPinDot3" class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200"></div>
+          <div
+            class="flex items-center justify-center gap-4 py-3.5 px-4 rounded-2xl bg-indigo-50/70 dark:bg-slate-800/90 border border-indigo-100 dark:border-slate-700/80 shadow-inner">
+            <div id="adminPinDot0"
+              class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200">
+            </div>
+            <div id="adminPinDot1"
+              class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200">
+            </div>
+            <div id="adminPinDot2"
+              class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200">
+            </div>
+            <div id="adminPinDot3"
+              class="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-slate-600 transition-all duration-200">
+            </div>
           </div>
         </div>
 
         <div class="grid grid-cols-3 gap-2 pt-1">
-          <button type="button" onclick="pressAdminKeypad('1')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">1</button>
-          <button type="button" onclick="pressAdminKeypad('2')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">2</button>
-          <button type="button" onclick="pressAdminKeypad('3')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">3</button>
+          <button type="button" onclick="pressAdminKeypad('1')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">1</button>
+          <button type="button" onclick="pressAdminKeypad('2')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">2</button>
+          <button type="button" onclick="pressAdminKeypad('3')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">3</button>
 
-          <button type="button" onclick="pressAdminKeypad('4')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">4</button>
-          <button type="button" onclick="pressAdminKeypad('5')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">5</button>
-          <button type="button" onclick="pressAdminKeypad('6')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">6</button>
+          <button type="button" onclick="pressAdminKeypad('4')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">4</button>
+          <button type="button" onclick="pressAdminKeypad('5')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">5</button>
+          <button type="button" onclick="pressAdminKeypad('6')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">6</button>
 
-          <button type="button" onclick="pressAdminKeypad('7')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">7</button>
-          <button type="button" onclick="pressAdminKeypad('8')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">8</button>
-          <button type="button" onclick="pressAdminKeypad('9')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">9</button>
+          <button type="button" onclick="pressAdminKeypad('7')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">7</button>
+          <button type="button" onclick="pressAdminKeypad('8')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">8</button>
+          <button type="button" onclick="pressAdminKeypad('9')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">9</button>
 
           <!-- ปุ่ม C: Font สีแดงกุหลาบใหญ่ชัดเจน -->
           <button type="button" onclick="clearAdminKeypadPin()"
             class="h-14 rounded-2xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 font-black text-2xl border border-rose-200 dark:border-rose-900/50 shadow-sm active:scale-95 transition-all flex items-center justify-center">
             C
           </button>
-          
-          <button type="button" onclick="pressAdminKeypad('0')" class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">0</button>
+
+          <button type="button" onclick="pressAdminKeypad('0')"
+            class="h-14 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-black text-2xl border border-slate-200 dark:border-slate-700 shadow-sm active:scale-95 transition-all">0</button>
 
           <!-- ปุ่ม Backspace: Font และไอคอนสีส้มอำพันใหญ่เด่นชัด -->
           <button type="button" onclick="backspaceAdminKeypadPin()"
             class="h-14 rounded-2xl bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 font-black text-2xl border border-amber-200 dark:border-amber-900/50 shadow-sm active:scale-95 transition-all flex items-center justify-center">
             <svg class="w-6 h-6 stroke-[2.4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414-6.414a2 2 0 011.414-.586H19a2 2 0 012 2v10a2 2 0 01-2 2h-8.172a2 2 0 01-1.414-.586L3 12z"/>
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414-6.414a2 2 0 011.414-.586H19a2 2 0 012 2v10a2 2 0 01-2 2h-8.172a2 2 0 01-1.414-.586L3 12z" />
             </svg>
           </button>
         </div>
@@ -873,42 +1003,52 @@
   <!-- 3. SHIFT QUICK ACTION POPUP MODAL -->
   <div id="shiftActionModal"
     class="fixed inset-0 bg-slate-950/70 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-md w-full p-4 sm:p-5 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-md w-full p-4 sm:p-5 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3">
         <div class="flex items-center gap-2">
           <span id="shiftModalIcon" class="text-2xl">☀️</span>
           <div>
-            <h4 id="shiftModalTitle" class="font-black text-slate-900 dark:text-white text-sm font-heading">เลือกเวร</h4>
+            <h4 id="shiftModalTitle" class="font-black text-slate-900 dark:text-white text-sm font-heading">เลือกเวร
+            </h4>
             <p id="shiftModalDate" class="text-[11px] text-blue-700 dark:text-blue-400 font-bold">วันที่...</p>
           </div>
         </div>
         <button onclick="closeShiftActionModal()" class="text-slate-400 hover:text-slate-600 p-1">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
       <div id="shiftModalBody" class="space-y-2 mb-4"></div>
-      <div id="shiftModalFooter" class="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800"></div>
+      <div id="shiftModalFooter" class="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      </div>
     </div>
   </div>
 
   <!-- 4. ADMIN CHANGE PASSWORD MODAL -->
   <div id="adminChangePasswordModal"
     class="fixed inset-0 bg-slate-950/70 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">🔑</div>
+          <div
+            class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">🔑
+          </div>
           <div>
             <h3 class="text-sm font-black text-slate-900 dark:text-white font-heading">เปลี่ยนรหัสผ่าน Admin</h3>
           </div>
         </div>
         <button onclick="closeAdminChangePasswordModal()" class="text-slate-400 hover:text-slate-600 p-1">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
@@ -919,21 +1059,25 @@
             class="w-full glass-input rounded-xl p-2 text-xs outline-none font-mono">
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">รหัสผ่านใหม่ (อย่างน้อย 4 ตัว)</label>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">รหัสผ่านใหม่ (อย่างน้อย 4
+            ตัว)</label>
           <input type="password" id="adminNewPassword" required minlength="4" placeholder="กรอกรหัสผ่านใหม่"
             class="w-full glass-input rounded-xl p-2 text-xs outline-none font-mono">
         </div>
         <div>
           <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ยืนยันรหัสผ่านใหม่</label>
-          <input type="password" id="adminConfirmPassword" required minlength="4" placeholder="ยืนยันรหัสผ่านใหม่อีกครั้ง"
+          <input type="password" id="adminConfirmPassword" required minlength="4"
+            placeholder="ยืนยันรหัสผ่านใหม่อีกครั้ง"
             class="w-full glass-input rounded-xl p-2 text-xs outline-none font-mono">
         </div>
 
         <div id="adminPasswordErrorMsg" class="text-xs text-rose-600 font-bold hidden"></div>
 
         <div class="pt-2 flex items-center gap-2">
-          <button type="button" onclick="closeAdminChangePasswordModal()" class="flex-1 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">ยกเลิก</button>
-          <button type="submit" class="flex-1 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-xl text-xs font-bold shadow-md">บันทึกรหัสใหม่</button>
+          <button type="button" onclick="closeAdminChangePasswordModal()"
+            class="flex-1 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">ยกเลิก</button>
+          <button type="submit"
+            class="flex-1 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-xl text-xs font-bold shadow-md">บันทึกรหัสใหม่</button>
         </div>
       </form>
     </div>
@@ -942,18 +1086,22 @@
   <!-- 5. NURSE CHANGE PASSWORD / PIN MODAL -->
   <div id="nurseChangePasswordModal"
     class="fixed inset-0 bg-slate-950/70 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[90vh] overflow-y-auto">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-xl font-bold">🔑</div>
+          <div class="w-9 h-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-xl font-bold">🔑
+          </div>
           <div>
             <h3 class="text-sm font-black text-slate-900 dark:text-white font-heading">เปลี่ยนรหัสผ่าน (PIN)</h3>
           </div>
         </div>
         <button onclick="closeNurseChangePasswordModal()" class="text-slate-400 hover:text-slate-600 p-1">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
@@ -977,79 +1125,149 @@
         <div id="nursePasswordErrorMsg" class="text-xs text-rose-600 font-bold hidden"></div>
 
         <div class="pt-2 flex items-center gap-2">
-          <button type="button" onclick="closeNurseChangePasswordModal()" class="flex-1 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">ยกเลิก</button>
-          <button type="submit" class="flex-1 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl text-xs font-bold shadow-md">บันทึก PIN ใหม่</button>
+          <button type="button" onclick="closeNurseChangePasswordModal()"
+            class="flex-1 py-2 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">ยกเลิก</button>
+          <button type="submit"
+            class="flex-1 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl text-xs font-bold shadow-md">บันทึก
+            PIN ใหม่</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- 6. Cell Quick Edit Modal (Admin Matrix) -->
+  <!-- 6. Cell Quick Edit Modal (My Duty / Matrix) -->
   <div id="cellEditModal"
-    class="fixed inset-0 bg-black/70 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-4 sm:p-5 border border-white/80 dark:border-slate-700 max-h-[90vh] overflow-y-auto">
-      <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
+    class="fixed inset-0 bg-slate-950/70 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 sm:p-6 border border-white/80 dark:border-slate-700/80 shadow-2xl max-h-[92vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95 transition-all">
+      <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3.5 sm:hidden shrink-0"></div>
 
-      <div class="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-800 mb-3">
-        <div>
-          <h4 id="cellEditNurseName" class="font-bold text-slate-900 dark:text-white text-sm font-heading">ชื่อพยาบาล</h4>
-          <p id="cellEditDateText" class="text-[11px] text-blue-700 dark:text-blue-400 font-medium">วันที่...</p>
+      <!-- Header: สดใส ชัดเจน ระบุชื่อและวันที่ -->
+      <div class="flex items-center justify-between pb-3.5 border-b border-slate-100 dark:border-slate-800 mb-4">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-500 to-indigo-600 text-white flex items-center justify-center text-xl font-bold shadow-md shadow-blue-500/25">
+            📅
+          </div>
+          <div>
+            <h4 id="cellEditNurseName"
+              class="font-black text-slate-900 dark:text-white text-sm font-heading leading-tight">ชื่อพยาบาล</h4>
+            <p id="cellEditDateText" class="text-xs text-blue-600 dark:text-blue-400 font-bold mt-0.5">วันที่...</p>
+          </div>
         </div>
-        <button id="closeCellEditBtn" class="text-slate-400 hover:text-slate-600 p-1">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <button id="closeCellEditBtn" type="button"
+          class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 flex items-center justify-center transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
-      <div class="space-y-2 mb-4">
-        <label class="flex items-center justify-between p-2.5 rounded-xl border border-sky-200 dark:border-sky-800 bg-sky-50/70 dark:bg-sky-950/40 cursor-pointer">
-          <div class="flex items-center gap-2.5">
-            <input type="checkbox" id="cellShiftM" class="w-4 h-4 text-blue-600 rounded">
-            <div class="font-bold text-sky-900 dark:text-sky-200 text-xs">เวรเช้า (08:30 - 16:30)</div>
+      <!-- Hint การเลือก -->
+      <p class="text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-3 px-1">
+        ✨ แตะที่การ์ดเพื่อเลือกหรือยกเลิกเวรที่ต้องการเข้าปฏิบัติงาน:
+      </p>
+
+      <!-- Shift Selector Cards (กดเลือกได้ทั้งการ์ด พร้อมเอฟเฟกต์ Toggle ชัดเจน) -->
+      <div class="space-y-2.5 mb-5">
+
+        <!-- เวรเช้า (Morning) -->
+        <label for="cellShiftM"
+          class="group relative flex items-center justify-between p-3 rounded-2xl border-2 border-sky-100 dark:border-sky-900/50 bg-sky-50/50 dark:bg-sky-950/20 hover:border-sky-400 dark:hover:border-sky-600 transition-all cursor-pointer shadow-xs active:scale-[0.98]">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl group-hover:scale-110 transition-transform">☀️</span>
+            <div>
+              <div class="font-black text-sky-950 dark:text-sky-200 text-xs sm:text-sm">เวรเช้า</div>
+              <div class="text-[10px] sm:text-[11px] font-mono text-sky-700/80 dark:text-sky-400 font-bold">08:30 -
+                16:30 น.</div>
+            </div>
           </div>
-          <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-200 text-sky-800">เช้า</span>
+          <div class="flex items-center gap-2">
+            <span
+              class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-sky-200 dark:bg-sky-900 text-sky-800 dark:text-sky-200">เช้า</span>
+            <input type="checkbox" id="cellShiftM"
+              class="w-5 h-5 text-blue-600 rounded-lg border-slate-300 dark:border-slate-600 focus:ring-blue-500 cursor-pointer">
+          </div>
         </label>
 
-        <label class="flex items-center justify-between p-2.5 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/70 dark:bg-amber-950/40 cursor-pointer">
-          <div class="flex items-center gap-2.5">
-            <input type="checkbox" id="cellShiftA" class="w-4 h-4 text-amber-600 rounded">
-            <div class="font-bold text-amber-900 dark:text-amber-200 text-xs">เวรบ่าย (16:30 - 00:30)</div>
+        <!-- เวรบ่าย (Afternoon) -->
+        <label for="cellShiftA"
+          class="group relative flex items-center justify-between p-3 rounded-2xl border-2 border-amber-100 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20 hover:border-amber-400 dark:hover:border-amber-600 transition-all cursor-pointer shadow-xs active:scale-[0.98]">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl group-hover:scale-110 transition-transform">⛅</span>
+            <div>
+              <div class="font-black text-amber-950 dark:text-amber-200 text-xs sm:text-sm">เวรบ่าย</div>
+              <div class="text-[10px] sm:text-[11px] font-mono text-amber-700/80 dark:text-amber-400 font-bold">16:30 -
+                00:30 น.</div>
+            </div>
           </div>
-          <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-200 text-amber-800">บ่าย</span>
+          <div class="flex items-center gap-2">
+            <span
+              class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-amber-200 dark:bg-amber-900 text-amber-800 dark:text-amber-200">บ่าย</span>
+            <input type="checkbox" id="cellShiftA"
+              class="w-5 h-5 text-amber-600 rounded-lg border-slate-300 dark:border-slate-600 focus:ring-amber-500 cursor-pointer">
+          </div>
         </label>
 
-        <label id="cellShiftNContainer" class="flex items-center justify-between p-2.5 rounded-xl border border-purple-200 dark:border-purple-800 bg-purple-50/70 dark:bg-purple-950/40 cursor-pointer">
-          <div class="flex items-center gap-2.5">
-            <input type="checkbox" id="cellShiftN" class="w-4 h-4 text-purple-600 rounded">
-            <div class="font-bold text-purple-900 dark:text-purple-200 text-xs">เวรดึก (00:30 - 08:30)</div>
+        <!-- เวรดึก (Night) -->
+        <label id="cellShiftNContainer" for="cellShiftN"
+          class="group relative flex items-center justify-between p-3 rounded-2xl border-2 border-purple-100 dark:border-purple-900/50 bg-purple-50/50 dark:bg-purple-950/20 hover:border-purple-400 dark:hover:border-purple-600 transition-all cursor-pointer shadow-xs active:scale-[0.98]">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl group-hover:scale-110 transition-transform">🌙</span>
+            <div>
+              <div class="font-black text-purple-950 dark:text-purple-200 text-xs sm:text-sm">เวรดึก</div>
+              <div class="text-[10px] sm:text-[11px] font-mono text-purple-700/80 dark:text-purple-400 font-bold">00:30
+                - 08:30 น.</div>
+            </div>
           </div>
-          <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-200 text-purple-800">ดึก</span>
+          <div class="flex items-center gap-2">
+            <span
+              class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-purple-200 dark:bg-purple-900 text-purple-800 dark:text-purple-200">ดึก</span>
+            <input type="checkbox" id="cellShiftN"
+              class="w-5 h-5 text-purple-600 rounded-lg border-slate-300 dark:border-slate-600 focus:ring-purple-500 cursor-pointer">
+          </div>
         </label>
+
       </div>
 
-      <div class="flex items-center gap-2">
-        <button id="saveCellEditBtn" class="flex-1 py-2.5 bg-blue-700 hover:bg-blue-800 text-white rounded-xl font-bold text-xs shadow">บันทึกการจอง</button>
-        <button id="clearCellBtn" class="px-3 py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl font-bold text-xs border border-rose-200">ล้างเวร</button>
+      <!-- Action Footer: ปุ่มบันทึกสีสันเด่นชัด และปุ่มล้างเวร -->
+      <div class="flex items-center gap-2.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+        <button id="clearCellBtn" type="button"
+          class="px-4 py-2.5 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 font-bold text-xs rounded-xl border border-rose-200 dark:border-rose-900/60 transition active:scale-95 cursor-pointer flex items-center gap-1.5">
+          <span>🗑️</span>
+          <span>ล้างเวร</span>
+        </button>
+        <button id="saveCellEditBtn" type="button"
+          class="flex-1 py-2.5 bg-gradient-to-r from-blue-600 via-sky-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-black text-xs sm:text-sm shadow-md shadow-blue-600/30 border border-white/20 transition transform active:scale-95 cursor-pointer flex items-center justify-center gap-1.5">
+          <span>💾</span>
+          <span>บันทึกการจอง</span>
+        </button>
       </div>
+
     </div>
   </div>
 
   <!-- 7. Quick Booking Form Modal -->
   <div id="bookingModal"
     class="fixed inset-0 bg-black/70 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-5 border border-white/80 dark:border-slate-700 max-h-[92vh] overflow-y-auto">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-5 border border-white/80 dark:border-slate-700 max-h-[92vh] overflow-y-auto">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
       <div class="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-800 mb-3">
         <h3 class="text-sm font-bold text-slate-800 dark:text-white font-heading">ฟอร์มจองเวรพยาบาล</h3>
         <button id="closeBookingModalBtn" class="text-slate-400 hover:text-slate-600 p-1">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
       <form id="quickBookingForm" class="space-y-3.5">
         <div>
           <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">พยาบาลผู้จอง</label>
-          <select id="modalNurseSelect" class="w-full glass-input rounded-xl p-2 text-xs outline-none font-medium text-slate-800 dark:text-slate-100"></select>
+          <select id="modalNurseSelect"
+            class="w-full glass-input rounded-xl p-2 text-xs outline-none font-medium text-slate-800 dark:text-slate-100"></select>
         </div>
 
         <div>
@@ -1082,12 +1300,16 @@
             <button type="button" id="selectAllDatesBtn" onclick="toggleSelectAllDates()"
               class="text-xs text-blue-600 hover:underline font-bold px-2 py-0.5 rounded-lg bg-blue-50 border border-blue-200">เลือกทั้งหมด</button>
           </div>
-          <div id="modalDateSelector" class="grid grid-cols-7 gap-1 p-2 border border-slate-200 rounded-xl max-h-48 overflow-y-auto bg-slate-50/70"></div>
+          <div id="modalDateSelector"
+            class="grid grid-cols-7 gap-1 p-2 border border-slate-200 rounded-xl max-h-48 overflow-y-auto bg-slate-50/70">
+          </div>
         </div>
 
         <div class="pt-2 flex items-center justify-end gap-2 border-t border-slate-100">
-          <button type="button" id="cancelBookingBtn" class="px-3.5 py-2 text-slate-600 rounded-xl text-xs font-medium">ยกเลิก</button>
-          <button type="submit" class="px-4 py-2 bg-gradient-to-r from-blue-700 to-indigo-700 text-white rounded-xl text-xs font-bold shadow">บันทึกการจอง</button>
+          <button type="button" id="cancelBookingBtn"
+            class="px-3.5 py-2 text-slate-600 rounded-xl text-xs font-medium">ยกเลิก</button>
+          <button type="submit"
+            class="px-4 py-2 bg-gradient-to-r from-blue-700 to-indigo-700 text-white rounded-xl text-xs font-bold shadow">บันทึกการจอง</button>
         </div>
       </form>
     </div>
@@ -1096,26 +1318,36 @@
   <!-- 8. Optimize Result Modal -->
   <div id="optimizeModal"
     class="fixed inset-0 bg-black/70 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-5 border border-white/80 dark:border-slate-700 max-h-[92vh] overflow-y-auto">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-5 border border-white/80 dark:border-slate-700 max-h-[92vh] overflow-y-auto">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
       <div class="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-800 mb-3">
         <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-sm">⚡</div>
+          <div
+            class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-sm">
+            ⚡</div>
           <h3 class="text-sm font-bold text-slate-900 dark:text-white font-heading">ผลการจัดตารางเวรอัตโนมัติ</h3>
         </div>
         <button id="closeOptimizeModalBtn" class="text-slate-400 hover:text-slate-600 p-1">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
       <div id="optimizeModalBody" class="mb-4"></div>
 
       <div class="flex items-center justify-between gap-2 pt-2.5 border-t border-slate-100 flex-wrap">
-        <button id="cancelOptimizeBtn" onclick="cancelOptimization()" class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">ย้อนกลับ</button>
+        <button id="cancelOptimizeBtn" onclick="cancelOptimization()"
+          class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-xl text-xs font-bold">ย้อนกลับ</button>
         <div class="flex items-center gap-2">
-          <button id="regenerateOptimizeBtn" onclick="runOptimization()" class="px-3 py-1.5 bg-amber-50 text-amber-800 border border-amber-300 rounded-xl text-xs font-bold">🔄 สุ่มใหม่</button>
-          <button id="confirmOptimizeBtn" onclick="confirmOptimization()" class="px-4 py-1.5 bg-gradient-to-r from-blue-700 to-indigo-700 text-white rounded-xl text-xs font-bold shadow">✓ ยืนยันตาราง</button>
+          <button id="regenerateOptimizeBtn" onclick="runOptimization()"
+            class="px-3 py-1.5 bg-amber-50 text-amber-800 border border-amber-300 rounded-xl text-xs font-bold">🔄
+            สุ่มใหม่</button>
+          <button id="confirmOptimizeBtn" onclick="confirmOptimization()"
+            class="px-4 py-1.5 bg-gradient-to-r from-blue-700 to-indigo-700 text-white rounded-xl text-xs font-bold shadow">✓
+            ยืนยันตาราง</button>
         </div>
       </div>
     </div>
@@ -1124,16 +1356,21 @@
   <!-- 9. Nurse Management Modal -->
   <div id="nurseManageModal"
     class="fixed inset-0 bg-black/70 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-2xl w-full p-4 sm:p-5 border border-white/80 dark:border-slate-700 max-h-[92vh] flex flex-col shadow-2xl">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-2xl w-full p-4 sm:p-5 border border-white/80 dark:border-slate-700 max-h-[92vh] flex flex-col shadow-2xl">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
-      <div class="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-800 mb-3 shrink-0">
+      <div
+        class="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-800 mb-3 shrink-0">
         <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold text-sm">👩‍⚕️</div>
+          <div class="w-8 h-8 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold text-sm">
+            👩‍⚕️</div>
           <h3 class="text-sm font-bold text-slate-900 dark:text-white font-heading">จัดการรายชื่อพยาบาล</h3>
         </div>
         <button onclick="closeNurseManageModal()" class="text-slate-400 hover:text-slate-600 p-1">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
@@ -1143,18 +1380,29 @@
           <form id="nurseManageForm" onsubmit="handleSaveNurse(event)" class="space-y-2.5">
             <input type="hidden" id="editNurseOriginalId" value="">
             <div class="grid grid-cols-2 gap-2">
-              <input type="text" id="nurseFormId" required placeholder="รหัสพยาบาล เช่น 6100088" class="glass-input rounded-xl p-2 text-xs font-bold outline-none">
-              <input type="number" id="nurseFormNum" required placeholder="หมายเลข เช่น 16" class="glass-input rounded-xl p-2 text-xs font-bold outline-none">
+              <input type="text" id="nurseFormId" required placeholder="รหัสพยาบาล เช่น 6100088"
+                class="glass-input rounded-xl p-2 text-xs font-bold outline-none">
+              <input type="number" id="nurseFormNum" required placeholder="หมายเลข เช่น 16"
+                class="glass-input rounded-xl p-2 text-xs font-bold outline-none">
             </div>
             <div class="grid grid-cols-2 gap-2">
-              <input type="text" id="nurseFormName" required placeholder="ชื่อ - สกุล" class="glass-input rounded-xl p-2 text-xs font-bold outline-none">
-              <input type="text" id="nurseFormPin" required placeholder="PIN 4 หลัก" class="glass-input rounded-xl p-2 text-xs font-mono font-bold outline-none">
+              <input type="text" id="nurseFormName" required placeholder="ชื่อ - สกุล"
+                class="glass-input rounded-xl p-2 text-xs font-bold outline-none">
+              <input type="text" id="nurseFormPin" required placeholder="PIN 4 หลัก"
+                class="glass-input rounded-xl p-2 text-xs font-mono font-bold outline-none">
             </div>
             <div class="flex items-center gap-2">
-              <input type="color" id="nurseFormColorPicker" value="#2563eb" class="w-7 h-7 rounded-lg cursor-pointer" onchange="syncNurseColorInput(this.value)">
-              <input type="text" id="nurseFormColor" value="#2563eb" class="glass-input rounded-xl p-1 text-xs font-mono w-24 uppercase" onchange="syncNurseColorPicker(this.value)">
-              <span id="nurseFormPreviewBadge" class="nurse-num-badge w-6 h-6 text-xs font-black inline-flex items-center justify-center rounded-md" style="background-color: #2563eb; color: #ffffff;">#</span>
-              <button type="submit" id="saveNurseBtn" class="ml-auto px-3.5 py-1.5 bg-gradient-to-r from-teal-600 to-emerald-600 text-white rounded-xl text-xs font-bold shadow-xs">+ บันทึก</button>
+              <input type="color" id="nurseFormColorPicker" value="#2563eb" class="w-7 h-7 rounded-lg cursor-pointer"
+                onchange="syncNurseColorInput(this.value)">
+              <input type="text" id="nurseFormColor" value="#2563eb"
+                class="glass-input rounded-xl p-1 text-xs font-mono w-24 uppercase"
+                onchange="syncNurseColorPicker(this.value)">
+              <span id="nurseFormPreviewBadge"
+                class="nurse-num-badge w-6 h-6 text-xs font-black inline-flex items-center justify-center rounded-md"
+                style="background-color: #2563eb; color: #ffffff;">#</span>
+              <button type="submit" id="saveNurseBtn"
+                class="ml-auto px-3.5 py-1.5 bg-gradient-to-r from-teal-600 to-emerald-600 text-white rounded-xl text-xs font-bold shadow-xs">+
+                บันทึก</button>
             </div>
           </form>
         </div>
@@ -1178,7 +1426,8 @@
       </div>
 
       <div class="pt-2.5 border-t border-slate-100 flex items-center justify-end shrink-0">
-        <button onclick="closeNurseManageModal()" class="px-4 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition">ปิดหน้าต่าง</button>
+        <button onclick="closeNurseManageModal()"
+          class="px-4 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition">ปิดหน้าต่าง</button>
       </div>
     </div>
   </div>
@@ -1186,13 +1435,15 @@
   <!-- 10. BOOKING SUMMARY & CONFIRMATION MODAL (พร้อมแท็บแยกประเภท) -->
   <div id="bookingSummaryModal"
     class="fixed inset-0 bg-slate-950/75 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-6 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[90vh] flex flex-col bg-white/95 dark:bg-slate-900/95">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-6 border border-white/80 dark:border-slate-700 shadow-2xl max-h-[90vh] flex flex-col bg-white/95 dark:bg-slate-900/95">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
       <!-- Header -->
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3 shrink-0">
         <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center text-xl font-bold shadow-md shadow-emerald-500/20 border border-white/30">
+          <div
+            class="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center text-xl font-bold shadow-md shadow-emerald-500/20 border border-white/30">
             📋
           </div>
           <div>
@@ -1200,27 +1451,34 @@
             <p class="text-[11px] text-slate-500 dark:text-slate-400">ตรวจสอบและยืนยันการเปลี่ยนแปลงเวรของคุณ</p>
           </div>
         </div>
-        <button onclick="closeBookingSummaryModal()" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <button onclick="closeBookingSummaryModal()"
+          class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
       <!-- Tabs Navigation -->
-      <div class="flex items-center gap-2 mb-3 bg-slate-100/80 dark:bg-slate-800/80 p-1 rounded-2xl border border-slate-200 dark:border-slate-700 shrink-0">
+      <div
+        class="flex items-center gap-2 mb-3 bg-slate-100/80 dark:bg-slate-800/80 p-1 rounded-2xl border border-slate-200 dark:border-slate-700 shrink-0">
         <button type="button" id="tabSummaryAllBtn" onclick="setSummaryModalTab('ALL')"
           class="flex-1 py-1.5 px-2 rounded-xl text-xs font-black transition flex items-center justify-center gap-1.5 bg-white text-slate-800 shadow-xs cursor-pointer">
           <span>ทั้งหมด</span>
-          <span id="tabCountAll" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700">0</span>
+          <span id="tabCountAll"
+            class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-blue-100 text-blue-700">0</span>
         </button>
         <button type="button" id="tabSummaryAddBtn" onclick="setSummaryModalTab('ADD')"
           class="flex-1 py-1.5 px-2 rounded-xl text-xs font-bold text-slate-500 hover:text-emerald-700 transition flex items-center justify-center gap-1.5 cursor-pointer">
           <span>➕ เลือกเพิ่ม</span>
-          <span id="tabCountAdd" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">0</span>
+          <span id="tabCountAdd"
+            class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">0</span>
         </button>
         <button type="button" id="tabSummaryRemoveBtn" onclick="setSummaryModalTab('REMOVE')"
           class="flex-1 py-1.5 px-2 rounded-xl text-xs font-bold text-slate-500 hover:text-rose-700 transition flex items-center justify-center gap-1.5 cursor-pointer">
           <span>🗑️ ขอยกเลิก</span>
-          <span id="tabCountRemove" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-rose-100 text-rose-700">0</span>
+          <span id="tabCountRemove"
+            class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-rose-100 text-rose-700">0</span>
         </button>
       </div>
 
@@ -1228,8 +1486,10 @@
       <div class="overflow-y-auto flex-1 pr-1 space-y-2 mb-4" id="bookingSummaryListContainer"></div>
 
       <!-- Modal Footer -->
-      <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2.5 shrink-0">
-        <button type="button" onclick="closeBookingSummaryModal()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-bold transition cursor-pointer">
+      <div
+        class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2.5 shrink-0">
+        <button type="button" onclick="closeBookingSummaryModal()"
+          class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-bold transition cursor-pointer">
           ปิดหน้าต่าง
         </button>
         <button type="button" id="btnFinalSubmitBooking" onclick="submitNurseBookingToSheet()"
@@ -1244,21 +1504,26 @@
   <!-- ==================== วางตรงนี้: 11. POPUP ระบบ CF (CONFIRM) จองก่อนได้ก่อน ==================== -->
   <div id="fastClaimModal"
     class="fixed inset-0 bg-slate-950/80 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
-    <div class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-2xl w-full p-4 sm:p-6 border border-amber-300/60 dark:border-amber-500/40 shadow-2xl max-h-[90vh] flex flex-col bg-white/95 dark:bg-slate-900/95 overflow-hidden">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-2xl w-full p-4 sm:p-6 border border-amber-300/60 dark:border-amber-500/40 shadow-2xl max-h-[90vh] flex flex-col bg-white/95 dark:bg-slate-900/95 overflow-hidden">
       <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-3 sm:hidden shrink-0"></div>
 
       <!-- Header ระบบ CF -->
-      <div class="flex items-center justify-between pb-3.5 border-b border-amber-200/80 dark:border-amber-900/50 mb-3.5 shrink-0">
+      <div
+        class="flex items-center justify-between pb-3.5 border-b border-amber-200/80 dark:border-amber-900/50 mb-3.5 shrink-0">
         <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 text-white flex items-center justify-center text-2xl font-black shadow-lg shadow-orange-500/30 animate-pulse border border-white/40">
+          <div
+            class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 text-white flex items-center justify-center text-2xl font-black shadow-lg shadow-orange-500/30 animate-pulse border border-white/40">
             ⚡
           </div>
           <div>
             <div class="flex items-center gap-2">
               <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white font-heading tracking-tight">
                 ระบบ CF (Confirm) จองก่อนได้ก่อน
-              </h3><div class="flex items-center gap-2 flex-wrap"></div>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-500 text-white animate-bounce shadow-xs">
+              </h3>
+              <div class="flex items-center gap-2 flex-wrap"></div>
+              <span
+                class="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-500 text-white animate-bounce shadow-xs">
                 LIVE CF
               </span>
             </div>
@@ -1267,18 +1532,24 @@
             </p>
           </div>
         </div>
-        <button onclick="closeFastClaimModal()" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <button onclick="closeFastClaimModal()"
+          class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
       </div>
 
       <!-- Notice Banner -->
-      <div class="p-3 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/30 border border-amber-200 dark:border-amber-800/60 mb-3 text-xs flex items-center justify-between">
+      <div
+        class="p-3 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/30 border border-amber-200 dark:border-amber-800/60 mb-3 text-xs flex items-center justify-between">
         <div class="flex items-center gap-2 text-amber-900 dark:text-amber-200 font-bold">
           <span>📢</span>
-          <span>เวรว่างที่เปิดให้ CF ในเดือนนี้: <b id="fastClaimVacantCount" class="text-rose-600 dark:text-rose-400 text-sm">0</b> เวร</span>
+          <span>เวรว่างที่เปิดให้ CF ในเดือนนี้: <b id="fastClaimVacantCount"
+              class="text-rose-600 dark:text-rose-400 text-sm">0</b> เวร</span>
         </div>
-        <button onclick="refreshFastClaimVacancies()" class="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-bold text-[11px] shadow-2xs hover:bg-slate-50 transition flex items-center gap-1 cursor-pointer">
+        <button onclick="refreshFastClaimVacancies()"
+          class="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-bold text-[11px] shadow-2xs hover:bg-slate-50 transition flex items-center gap-1 cursor-pointer">
           <span>🔄</span>
           <span>อัปเดตเวรว่างล่าสุด</span>
         </button>
@@ -1288,12 +1559,90 @@
       <div id="fastClaimListContainer" class="overflow-y-auto flex-1 pr-1 space-y-2.5 min-h-[220px]"></div>
 
       <!-- Footer -->
-      <div class="pt-3.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2 shrink-0">
+      <div
+        class="pt-3.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2 shrink-0">
         <div class="text-[11px] text-slate-400 font-medium">
           * ข้อมูลการ CF จะบันทึกลง Google Sheets ทันทีที่กดยืนยัน
         </div>
-        <button type="button" onclick="closeFastClaimModal()" class="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-black transition cursor-pointer">
+        <button type="button" onclick="closeFastClaimModal()"
+          class="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-black transition cursor-pointer">
           ปิดหน้าต่าง
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================================== -->
+
+  <!-- ==================== 12. POPUP MODAL: กำหนดช่วงวัน CUSTOM เวร ==================== -->
+  <div id="customShiftModal"
+    class="fixed inset-0 bg-slate-950/75 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 sm:p-6 border border-white/80 dark:border-slate-700 shadow-2xl bg-white/95 dark:bg-slate-900/95 space-y-4">
+      <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-2 sm:hidden shrink-0"></div>
+
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <div
+            class="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-600 flex items-center justify-center text-xl font-bold border border-amber-300/40">
+            🛠️
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-base font-black text-slate-900 dark:text-white font-heading">กำหนด Custom ช่วงเวร
+            </h3>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">สลับ 2 เวร / 3 เวร ระหว่างเดือน</p>
+          </div>
+        </div>
+        <button onclick="closeCustomShiftModal()" type="button"
+          class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <!-- Body Form -->
+      <div class="space-y-3.5 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1.5">เลือกรูปแบบการปรับเวร:</label>
+          <div class="grid grid-cols-1 gap-2">
+            <label
+              class="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+              <input type="radio" name="customShiftDirection" value="to3" checked class="w-4 h-4 text-amber-600">
+              <div>
+                <div class="font-bold text-slate-800 dark:text-slate-100">☀️⛅ 2 เวร ➔ ☀️⛅🌙 3 เวร</div>
+                <div class="text-[10px] text-slate-500">ต้นเดือน 2 เวร แล้วเปิดเวรดึกช่วงท้ายเดือน</div>
+              </div>
+            </label>
+            <label
+              class="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+              <input type="radio" name="customShiftDirection" value="to2" class="w-4 h-4 text-amber-600">
+              <div>
+                <div class="font-bold text-slate-800 dark:text-slate-100">☀️⛅🌙 3 เวร ➔ ☀️⛅ 2 เวร</div>
+                <div class="text-[10px] text-slate-500">ต้นเดือน 3 เวร แล้วปิดเวรดึกช่วงท้ายเดือน</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1.5">ตั้งแต่วันที่:</label>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-slate-500">วันที่</span>
+            <input type="number" id="customShiftStartDayInput" min="1" max="31" value="11"
+              class="flex-1 glass-input rounded-xl p-2.5 text-center text-sm font-black text-blue-700 dark:text-blue-400 border border-slate-300 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-slate-800">
+            <span class="text-xs font-bold text-slate-500">เป็นต้นไปจนสิ้นเดือน</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+        <button type="button" onclick="closeCustomShiftModal()"
+          class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold transition cursor-pointer">
+          ยกเลิก
+        </button>
+        <button type="button" onclick="applyCustomShiftSettings()"
+          class="flex-1 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-xl text-xs font-black shadow-md transition cursor-pointer">
+          ✓ นำไปใช้งาน
         </button>
       </div>
     </div>
@@ -1304,11 +1653,12 @@
   <nav id="mobileBottomNav"
     class="fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-t border-slate-200/90 dark:border-slate-800 shadow-2xl px-3 py-2 md:hidden safe-area-bottom">
     <div class="grid grid-cols-4 gap-1 items-center max-w-md mx-auto">
-      
+
       <!-- 1. ปฏิทินหลัก -->
       <button id="bottomNavDashboardBtn" onclick="switchView('dashboard')"
         class="relative flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-transform duration-150 active:scale-90 hover:scale-105 cursor-pointer text-blue-600 dark:text-blue-400 font-black">
-        <span class="nav-indicator-dot absolute top-0.5 right-4 w-2 h-2 rounded-full bg-sky-500 ring-2 ring-white dark:ring-slate-900 animate-pulse hidden"></span>
+        <span
+          class="nav-indicator-dot absolute top-0.5 right-4 w-2 h-2 rounded-full bg-sky-500 ring-2 ring-white dark:ring-slate-900 animate-pulse hidden"></span>
         <span class="text-2xl leading-none">📊</span>
         <span class="text-[11px] tracking-tight mt-1 font-bold">ปฏิทินหลัก</span>
       </button>
@@ -1316,11 +1666,12 @@
       <!-- 2. ตารางเวรของฉัน พร้อม Badge ตัวเลขสีแดงเตือน -->
       <button id="bottomNavPersonalBtn" onclick="switchView('personal')"
         class="relative flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-transform duration-150 active:scale-90 hover:scale-105 cursor-pointer text-slate-500 dark:text-slate-400 font-semibold">
-        <span id="bottomNavPersonalBadge" 
-              class="hidden absolute -top-1.5 right-2 min-w-[22px] h-5 px-1 bg-gradient-to-r from-rose-600 to-red-600 text-white text-[11px] font-black rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 shadow-md shadow-rose-600/50 animate-pulse z-20">
+        <span id="bottomNavPersonalBadge"
+          class="hidden absolute -top-1.5 right-2 min-w-[22px] h-5 px-1 bg-gradient-to-r from-rose-600 to-red-600 text-white text-[11px] font-black rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 shadow-md shadow-rose-600/50 animate-pulse z-20">
           0
         </span>
-        <span class="nav-indicator-dot absolute top-0.5 right-4 w-2 h-2 rounded-full bg-sky-500 ring-2 ring-white dark:ring-slate-900 animate-pulse hidden"></span>
+        <span
+          class="nav-indicator-dot absolute top-0.5 right-4 w-2 h-2 rounded-full bg-sky-500 ring-2 ring-white dark:ring-slate-900 animate-pulse hidden"></span>
         <span class="text-2xl leading-none">📅</span>
         <span class="text-[11px] tracking-tight mt-1">เวรของฉัน</span>
       </button>
@@ -1328,7 +1679,8 @@
       <!-- 3. สรุปตารางเวร (Excel) -->
       <button id="bottomNavExcelBtn" onclick="switchView('excel')"
         class="relative flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-transform duration-150 active:scale-90 hover:scale-105 cursor-pointer text-slate-500 dark:text-slate-400 font-semibold">
-        <span class="nav-indicator-dot absolute top-0.5 right-4 w-2 h-2 rounded-full bg-sky-500 ring-2 ring-white dark:ring-slate-900 animate-pulse hidden"></span>
+        <span
+          class="nav-indicator-dot absolute top-0.5 right-4 w-2 h-2 rounded-full bg-sky-500 ring-2 ring-white dark:ring-slate-900 animate-pulse hidden"></span>
         <span class="text-2xl leading-none">📋</span>
         <span class="text-[11px] tracking-tight mt-1 font-bold">สรุปตารางเวร</span>
       </button>
@@ -1336,7 +1688,8 @@
       <!-- 4. พื้นที่ Admin -->
       <button id="bottomNavAdminBtn" onclick="switchView('admin')"
         class="relative flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-transform duration-150 active:scale-90 hover:scale-105 cursor-pointer text-slate-500 dark:text-slate-400 font-semibold">
-        <span class="nav-indicator-dot absolute top-0.5 right-4 w-2 h-2 rounded-full bg-sky-500 ring-2 ring-white dark:ring-slate-900 animate-pulse hidden"></span>
+        <span
+          class="nav-indicator-dot absolute top-0.5 right-4 w-2 h-2 rounded-full bg-sky-500 ring-2 ring-white dark:ring-slate-900 animate-pulse hidden"></span>
         <span class="text-2xl leading-none">🛡️</span>
         <span class="text-[11px] tracking-tight mt-1">Admin</span>
       </button>
@@ -1350,6 +1703,81 @@
   <!-- 2. โหลดไฟล์สคริปต์หลักเดิม -->
   <script src="js/exceljs.min.js"></script>
   <script src="js/app.js"></script>
+
+  <!-- MODAL: กำหนดวันสลับ 2 เวร / 3 เวร (CUSTOM SHIFT) -->
+  <div id="customShiftModal"
+    class="fixed inset-0 bg-slate-950/70 z-50 flex items-end sm:items-center justify-center hidden backdrop-blur-md p-0 sm:p-4">
+    <div
+      class="glass-modal modal-sheet-panel rounded-t-3xl sm:rounded-3xl max-w-sm w-full p-5 sm:p-6 border border-white/80 dark:border-slate-700 shadow-2xl bg-white/95 dark:bg-slate-900/95 space-y-4">
+      <div class="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full mx-auto mb-2 sm:hidden shrink-0"></div>
+
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <div
+            class="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-600 flex items-center justify-center text-xl font-bold border border-amber-300/40">
+            🛠️
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-base font-black text-slate-900 dark:text-white font-heading">กำหนด Custom ช่วงเวร
+            </h3>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">สลับ 2 เวร / 3 เวร ระหว่างเดือน</p>
+          </div>
+        </div>
+        <button onclick="closeCustomShiftModal()" type="button"
+          class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-400 hover:text-slate-700 flex items-center justify-center transition cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <div class="space-y-3.5 text-xs">
+        <!-- ตัวเลือกรูปแบบ -->
+        <div>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1.5">เลือกรูปแบบการปรับเวร:</label>
+          <div class="grid grid-cols-1 gap-2">
+            <label
+              class="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+              <input type="radio" name="customShiftDirection" value="to3" checked class="w-4 h-4 text-amber-600">
+              <div>
+                <div class="font-bold text-slate-800 dark:text-slate-100">☀️⛅ 2 เวร ➔ ☀️⛅🌙 3 เวร</div>
+                <div class="text-[10px] text-slate-500">ต้นเดือน 2 เวร แล้วเปิดเวรดึกช่วงท้ายเดือน</div>
+              </div>
+            </label>
+            <label
+              class="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+              <input type="radio" name="customShiftDirection" value="to2" class="w-4 h-4 text-amber-600">
+              <div>
+                <div class="font-bold text-slate-800 dark:text-slate-100">☀️⛅🌙 3 เวร ➔ ☀️⛅ 2 เวร</div>
+                <div class="text-[10px] text-slate-500">ต้นเดือน 3 เวร แล้วปิดเวรดึกช่วงท้ายเดือน</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1.5"
+            id="customShiftDateLabel">ตั้งแต่วันที่:</label>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-slate-500">วันที่</span>
+            <input type="number" id="customShiftStartDayInput" min="1" max="31" value="11"
+              class="flex-1 glass-input rounded-xl p-2.5 text-center text-sm font-black text-blue-700 dark:text-blue-400 border border-slate-300 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-slate-800">
+            <span class="text-xs font-bold text-slate-500">เป็นต้นไปจนสิ้นเดือน</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+        <button type="button" onclick="closeCustomShiftModal()"
+          class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 rounded-xl text-xs font-bold transition cursor-pointer">
+          ยกเลิก
+        </button>
+        <button type="button" onclick="applyCustomShiftSettings()"
+          class="flex-1 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white rounded-xl text-xs font-black shadow-md transition cursor-pointer">
+          ✓ นำไปใช้งาน
+        </button>
+      </div>
+    </div>
+  </div>
+
 </body>
 
-</html> 
+</html>

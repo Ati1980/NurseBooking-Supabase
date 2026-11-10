@@ -215,6 +215,149 @@ function applyTheme(isDark) {
 
 initTheme();
 
+// =========================================================================
+// 🛠️ CUSTOM SHIFT CONTROLLER & LOGIC (สลับ 2 เวร / 3 เวร ระหว่างเดือน)
+// =========================================================================
+var customShiftStartDay = 11;
+var customShiftDirection = 'to3'; // 'to3' = 2 ไป 3, 'to2' = 3 ลดเหลือ 2
+
+// 1. ฟังก์ชันดึงเวรที่เปิดให้จองในแต่ละวัน
+function getActiveShiftsForDay(day) {
+  if (shiftMode === 2) {
+    return ['M', 'A'];
+  }
+  if (shiftMode === 3) {
+    return ['M', 'A', 'N'];
+  }
+  if (shiftMode === 'custom') {
+    if (customShiftDirection === 'to3') {
+      // ก่อนวันตัด = 2 เวร, ตั้งแต่วันตัดเป็นต้นไป = 3 เวร
+      return (day < customShiftStartDay) ? ['M', 'A'] : ['M', 'A', 'N'];
+    } else if (customShiftDirection === 'to2') {
+      // ก่อนวันตัด = 3 เวร, ตั้งแต่วันตัดเป็นต้นไป = 2 เวร (ลดเหลือ 2 เวร)
+      return (day < customShiftStartDay) ? ['M', 'A', 'N'] : ['M', 'A'];
+    }
+  }
+  return ['M', 'A', 'N'];
+}
+
+// 2. ตรวจว่าเดือนนี้มีเวรดึก (N) ปรากฏอย่างน้อย 1 วันหรือไม่
+function monthHasNightShift() {
+  if (shiftMode === 2) return false;
+  if (shiftMode === 3) return true;
+  if (shiftMode === 'custom') {
+    var daysCount = (typeof getDaysCount === 'function')
+      ? getDaysCount(currentYear, currentMonth)
+      : 31;
+    if (customShiftDirection === 'to3') {
+      return customShiftStartDay <= daysCount;
+    } else {
+      return customShiftStartDay > 1; // ถ้า to2 และเริ่มลดตั้งแต่วันที่ > 1 แปลว่าช่วงต้นเดือนยังมีเวรดึก
+    }
+  }
+  return true;
+}
+
+// 3. ฟังก์ชันเปิดหน้าต่าง Custom Modal
+window.openCustomShiftModal = function () {
+  var input = document.getElementById('customShiftStartDayInput');
+  var daysCount = (typeof getDaysCount === 'function')
+    ? getDaysCount(currentYear, currentMonth)
+    : 31;
+
+  if (input) {
+    input.max = daysCount;
+    input.value = customShiftStartDay || 11;
+  }
+
+  var radios = document.querySelectorAll('input[name="customShiftDirection"]');
+  radios.forEach(function (r) {
+    r.checked = (r.value === customShiftDirection);
+  });
+
+  var modal = document.getElementById('customShiftModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.style.display = 'flex';
+  }
+};
+
+// 4. ฟังก์ชันปิดหน้าต่าง Custom Modal (ปุ่ม ✕ และปุ่ม ยกเลิก)
+window.closeCustomShiftModal = function () {
+  var modal = document.getElementById('customShiftModal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.style.display = 'none';
+  }
+};
+
+// 5. ฟังก์ชันบันทึกการตั้งค่า Custom (ปุ่ม ✓ นำไปใช้งาน)
+window.applyCustomShiftSettings = function () {
+  var input = document.getElementById('customShiftStartDayInput');
+  var val = parseInt(input ? input.value : '11', 10);
+  var daysCount = (typeof getDaysCount === 'function')
+    ? getDaysCount(currentYear, currentMonth)
+    : 31;
+
+  var checkedRadio = document.querySelector('input[name="customShiftDirection"]:checked');
+  var dir = checkedRadio ? checkedRadio.value : 'to3';
+
+  if (isNaN(val) || val < 1 || val > daysCount) {
+    alert('กรุณาระบุวันที่ระหว่าง 1 ถึง ' + daysCount);
+    return;
+  }
+
+  customShiftStartDay = val;
+  customShiftDirection = dir;
+
+  try {
+    sessionStorage.setItem('nurse_custom_start_' + currentYear + '_' + currentMonth, val);
+    sessionStorage.setItem('nurse_custom_dir_' + currentYear + '_' + currentMonth, dir);
+  } catch (e) { }
+
+  window.closeCustomShiftModal();
+
+  if (typeof setShiftMode === 'function') {
+    setShiftMode('custom');
+  } else {
+    shiftMode = 'custom';
+    if (typeof updateShiftModeUI === 'function') updateShiftModeUI();
+    if (typeof renderPublicDashboard === 'function') renderPublicDashboard();
+  }
+
+  var textDesc = (dir === 'to3')
+    ? ('วันที่ 1-' + (val - 1) + ' (2 เวร), วันที่ ' + val + '-' + daysCount + ' (3 เวร)')
+    : ('วันที่ 1-' + (val - 1) + ' (3 เวร), วันที่ ' + val + '-' + daysCount + ' (ลดเหลือ 2 เวร)');
+
+  if (typeof window.showToast === 'function') {
+    window.showToast('🛠️ Custom: ' + textDesc);
+  }
+};
+
+window.applyCustomShiftSettings = function () {
+  const input = document.getElementById('customShiftStartDayInput');
+  const val = parseInt(input?.value, 10);
+  const daysCount = getDaysCount(currentYear, currentMonth);
+  const dir = document.querySelector('input[name="customShiftDirection"]:checked')?.value || 'to3';
+
+  if (isNaN(val) || val < 1 || val > daysCount) {
+    alert(`กรุณาระบุวันที่ระหว่าง 1 ถึง ${daysCount}`);
+    return;
+  }
+
+  customShiftStartDay = val;
+  customShiftDirection = dir;
+
+  closeCustomShiftModal();
+  setShiftMode('custom');
+
+  const textLabel = (dir === 'to3')
+    ? `วันที่ 1-${val - 1} (2 เวร), วันที่ ${val}-${daysCount} (3 เวร)`
+    : `วันที่ 1-${val - 1} (3 เวร), วันที่ ${val}-${daysCount} (ลดเหลือ 2 เวร)`;
+
+  window.showToast?.(`🛠️ Custom: ${textLabel}`);
+};
+
 function getActiveShifts() {
   return shiftMode === 2 ? ['M', 'A'] : ['M', 'A', 'N'];
 }
@@ -234,49 +377,85 @@ window.setShiftMode = function (mode) {
 function updateShiftModeUI() {
   const btn2 = document.getElementById('mode2ShiftBtn');
   const btn3 = document.getElementById('mode3ShiftBtn');
+  const btnCustom = document.getElementById('modeCustomShiftBtn');
+  const textCustom = document.getElementById('customShiftBtnText');
+
+  const activeClass = "px-2.5 py-1 rounded-lg text-xs font-black bg-blue-700 text-white shadow-xs transition cursor-pointer";
+  const inactiveClass = "px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-700 transition cursor-pointer";
+  const customActiveClass = "px-2.5 py-1 rounded-lg text-xs font-black bg-amber-600 text-white shadow-xs transition flex items-center gap-1 cursor-pointer";
+
   if (btn2 && btn3) {
-    if (shiftMode === 2) {
-      btn2.className = "px-3 py-1 rounded-lg text-xs font-black bg-blue-700 text-white shadow-xs transition";
-      btn3.className = "px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition";
-    } else {
-      btn3.className = "px-3 py-1 rounded-lg text-xs font-black bg-blue-700 text-white shadow-xs transition";
-      btn2.className = "px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-blue-700 transition";
+    btn2.className = (shiftMode === 2) ? activeClass : inactiveClass;
+    btn3.className = (shiftMode === 3) ? activeClass : inactiveClass;
+    if (btnCustom) {
+      btnCustom.className = (shiftMode === 'custom') ? customActiveClass : inactiveClass;
     }
   }
 
+  // =========================================================================
+  // 👉 จุดที่ 3: ปรับข้อความปุ่ม Custom ให้แสดงทั้งทิศทาง (➔ 3 เวร หรือ ➔ 2 เวร) และวันที่
+  // =========================================================================
+  if (textCustom) {
+    if (shiftMode === 'custom') {
+      const dirText = (typeof customShiftDirection !== 'undefined' && customShiftDirection === 'to2')
+        ? '➔ 2 เวร'
+        : '➔ 3 เวร';
+      textCustom.innerText = `Custom (${dirText} วันที่ ${customShiftStartDay})`;
+    } else {
+      textCustom.innerText = 'Custom เวร';
+    }
+  }
+
+  // ตรวจสอบว่าในเดือนนี้มีเวรดึก (N) เกิดขึ้นหรือไม่
+  const hasNightInMonth = (typeof monthHasNightShift === 'function')
+    ? monthHasNightShift()
+    : (shiftMode !== 2);
+
+  // ควบคุมการแสดงผลเวรดึกใน Modal จองหลายวันพร้อมกัน
   const shiftNContainer = document.getElementById('shiftBtnContainerN') || document.querySelector('input[name="modalShift"][value="N"]')?.closest('label');
   if (shiftNContainer) {
-    shiftNContainer.style.display = (shiftMode === 2 ? 'none' : 'flex');
-    if (shiftMode === 2) {
+    shiftNContainer.style.display = hasNightInMonth ? 'flex' : 'none';
+    if (!hasNightInMonth) {
       const nCb = shiftNContainer.querySelector('input[type="checkbox"]');
       if (nCb) nCb.checked = false;
       shiftNContainer.classList.remove('is-active');
     }
   }
 
+  // ควบคุมการแสดงผลเวรดึกใน Popup เลือกเวรรายวัน
   const cellShiftNCont = document.getElementById('cellShiftNContainer');
   if (cellShiftNCont) {
-    cellShiftNCont.style.display = (shiftMode === 2 ? 'none' : 'flex');
+    cellShiftNCont.style.display = hasNightInMonth ? 'flex' : 'none';
   }
 
+  // การ์ดสถิติเวรดึกในหน้าตารางเวรของฉัน
   const nurseStatN = document.getElementById('nurseStatNCard');
   const nurseStatsGrid = document.getElementById('nursePersonalStatsContainer');
   if (nurseStatN) {
-    nurseStatN.style.display = (shiftMode === 2 ? 'none' : 'flex');
+    nurseStatN.style.display = hasNightInMonth ? 'flex' : 'none';
   }
   if (nurseStatsGrid) {
-    if (shiftMode === 2) {
+    if (!hasNightInMonth) {
       nurseStatsGrid.className = "grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6";
     } else {
       nurseStatsGrid.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6";
     }
   }
 
+  // คอลัมน์เวรดึกในตารางสรุปชั่วโมงเวร
+  const summaryNHead = document.getElementById('summaryColNHead');
+  if (summaryNHead) {
+    summaryNHead.style.display = hasNightInMonth ? '' : 'none';
+  }
+
   const modalShiftCont = document.getElementById('modalShiftOptionsContainer');
   if (modalShiftCont) {
-    modalShiftCont.className = (shiftMode === 2 ? 'grid grid-cols-2 gap-2.5' : 'grid grid-cols-3 gap-2.5');
+    modalShiftCont.className = (!hasNightInMonth ? 'grid grid-cols-2 gap-2.5' : 'grid grid-cols-3 gap-2.5');
   }
-  syncShiftToggleVisuals();
+
+  if (typeof syncShiftToggleVisuals === 'function') {
+    syncShiftToggleVisuals();
+  }
 }
 
 function syncShiftToggleVisuals() {
@@ -1041,7 +1220,6 @@ window.setDashboardFilter = function (filter) {
 function renderPublicDashboard() {
   const daysCount = getDaysCount(currentYear, currentMonth);
   const firstDayIndex = getFirstDayIndex(currentYear, currentMonth);
-  const activeShifts = getActiveShifts();
 
   const subTitle = document.getElementById('dashCalendarSubtitle');
   if (subTitle) {
@@ -1064,7 +1242,7 @@ function renderPublicDashboard() {
     `).join('');
   }
 
-  let totalShiftsCount = daysCount * activeShifts.length;
+  let totalShiftsCount = 0;
   let unassignedShiftsCount = 0;
   let assignedShiftsCount = 0;
   let totalBookingsCount = 0;
@@ -1081,7 +1259,16 @@ function renderPublicDashboard() {
     const dayOfWeek = dt.getDay();
     let shiftRowsHtml = '';
 
-    activeShifts.forEach(s => {
+    // =========================================================================
+    // 👉 ข้อ 2.4: ดึงรายการเวรตามวันที่ d (รองรับทั้งแบบ 2 เวร, 3 เวร และ Custom)
+    // =========================================================================
+    const activeShiftsThisDay = (typeof getActiveShiftsForDay === 'function')
+      ? getActiveShiftsForDay(d)
+      : (shiftMode === 2 ? ['M', 'A'] : ['M', 'A', 'N']);
+
+    totalShiftsCount += activeShiftsThisDay.length;
+
+    activeShiftsThisDay.forEach(s => {
       const shiftObj = SHIFTS[s];
       const assigned = [];
       NURSES.forEach(n => {
@@ -1151,7 +1338,9 @@ function renderPublicDashboard() {
   const statBookings = document.getElementById('dashStatBookings');
   if (statBookings) statBookings.innerText = `${totalBookingsCount} ครั้ง`;
 
-  renderPublicDashboardDailyCards(activeShifts);
+  if (typeof renderPublicDashboardDailyCards === 'function') {
+    renderPublicDashboardDailyCards();
+  }
   updateCalendarViewDisplay();
 }
 
@@ -1183,7 +1372,7 @@ function updateCalendarViewDisplay() {
   }
 }
 
-function renderPublicDashboardDailyCards(activeShifts) {
+function renderPublicDashboardDailyCards() {
   const dailyContainer = document.getElementById('mainCalendarDailyContainer');
   if (!dailyContainer) return;
 
@@ -1196,7 +1385,12 @@ function renderPublicDashboardDailyCards(activeShifts) {
     const dayName = CALENDAR_HEADERS[dayOfWeek].th;
     let shiftRowsHtml = '';
 
-    activeShifts.forEach(s => {
+    // 👉 ดึงเวรตามวันที่ d
+    const activeShiftsThisDay = (typeof getActiveShiftsForDay === 'function')
+      ? getActiveShiftsForDay(d)
+      : (shiftMode === 2 ? ['M', 'A'] : ['M', 'A', 'N']);
+
+    activeShiftsThisDay.forEach(s => {
       const shiftObj = SHIFTS[s];
       let count = 0;
       NURSES.forEach(n => {
@@ -1657,6 +1851,7 @@ function renderMatrix() {
   const tbody = document.getElementById('matrixBody');
   const tfoot = document.getElementById('matrixFooter');
 
+  // 1. หัวตาราง (Thead)
   let h = `<tr>
     <th class="sticky-col-1 bg-slate-100 py-3 px-2 text-center w-10 border-r border-slate-300">#</th>
     <th class="sticky-col-2 bg-slate-100 py-3 px-3 text-left w-24 font-mono border-r border-slate-300">รหัส</th>
@@ -1667,7 +1862,11 @@ function renderMatrix() {
     const dayOfWeek = dt.getDay();
     const isSunday = (dayOfWeek === 0);
     const isSaturday = (dayOfWeek === 6);
-    let thClass = isSunday ? 'bg-rose-100/90 text-rose-800' : (isSaturday ? 'bg-purple-100/90 text-purple-800' : 'bg-slate-100 text-slate-700');
+
+    // โทนสีหัวตาราง: วันอาทิตย์ (ส้ม/แดง), วันเสาร์ (ม่วง)
+    let thClass = isSunday
+      ? 'bg-rose-100 text-rose-800 border-rose-300'
+      : (isSaturday ? 'bg-purple-100 text-purple-800 border-purple-300' : 'bg-slate-100 text-slate-700');
 
     h += `<th class="p-1.5 text-center min-w-[38px] border-r border-slate-200 ${thClass}">
       <div class="font-extrabold text-xs">${d}</div>
@@ -1678,11 +1877,12 @@ function renderMatrix() {
   h += `
     <th class="py-3 px-2 text-center bg-sky-100 text-sky-900 border-l-2 border-slate-300 font-bold">ช</th>
     <th class="py-3 px-2 text-center bg-amber-100 text-amber-900 border-l border-slate-300 font-bold">บ</th>
-    ${shiftMode === 3 ? '<th class="py-3 px-2 text-center bg-purple-100 text-purple-900 border-l border-slate-300 font-bold">ด</th>' : ''}
+    ${(typeof monthHasNightShift === 'function' ? monthHasNightShift() : shiftMode === 3) ? '<th class="py-3 px-2 text-center bg-purple-100 text-purple-900 border-l border-slate-300 font-bold">ด</th>' : ''}
     <th class="py-3 px-2 text-center bg-blue-100 text-blue-950 border-l border-slate-300 font-extrabold">รวม</th>
   </tr>`;
   if (thead) thead.innerHTML = h;
 
+  // 2. เนื้อหาตารางรายคน (Tbody)
   let b = '';
   NURSES.forEach((nurse, idx) => {
     const nurseShifts = monthState.roster[nurse.id] || {};
@@ -1693,7 +1893,7 @@ function renderMatrix() {
 
     b += `<tr class="${rowClass} transition border-b border-slate-200">
       <td class="sticky-col-1 ${stickyBg} py-2 px-2 text-center border-r border-slate-200">
-        <span class="nurse-num-badge w-6 h-6 text-xs font-black" style="background-color: ${nurse.color}; color: ${nurse.textColor};" title="หมายเลข ${nurse.num}">
+        <span class="nurse-num-badge w-6 h-6 text-xs font-black inline-flex items-center justify-center rounded-lg" style="background-color: ${nurse.color}; color: ${nurse.textColor};" title="หมายเลข ${nurse.num}">
           ${nurse.num}
         </span>
       </td>
@@ -1701,22 +1901,36 @@ function renderMatrix() {
       <td class="sticky-col-3 ${stickyBg} py-2.5 px-3 text-slate-800 border-r-2 border-slate-300 whitespace-nowrap font-bold">${nurse.name}</td>`;
 
     for (let d = 1; d <= daysCount; d++) {
+      const dt = new Date(currentYear, currentMonth, d);
+      const dayOfWeek = dt.getDay();
+      const isSunday = (dayOfWeek === 0);
+      const isSaturday = (dayOfWeek === 6);
+
+      // 👉 ใส่สีคอลัมน์เสาร์/อาทิตย์ตามสีหัววัน (วันเสาร์ = ม่วง, วันอาทิตย์ = แดง/กุหลาบ)
+      let colWeekendClass = '';
+      if (isSunday) {
+        colWeekendClass = 'sunday-cell';
+      } else if (isSaturday) {
+        colWeekendClass = 'saturday-cell';
+      }
+
       const dayShifts = nurseShifts[d] || [];
       let tags = '';
       dayShifts.forEach(s => {
         if (s === 'M') { countM++; tags += `<span class="shift-tag shift-m">ช</span>`; }
         if (s === 'A') { countA++; tags += `<span class="shift-tag shift-a">บ</span>`; }
-        if (s === 'N' && shiftMode === 3) { countN++; tags += `<span class="shift-tag shift-n">ด</span>`; }
+        if (s === 'N') { countN++; tags += `<span class="shift-tag shift-n">ด</span>`; }
       });
 
-      b += `<td class="p-1 text-center border-r border-slate-200 cursor-pointer transition" onclick="openCellEditor('${nurse.id}', ${d})">
+      b += `<td class="p-1 text-center border-r border-slate-200 cursor-pointer transition ${colWeekendClass}" onclick="openCellEditor('${nurse.id}', ${d})">
         <div class="min-h-[26px] flex items-center justify-center gap-0.5 flex-wrap">
           ${tags || '<span class="text-slate-300 text-[10px] font-bold hover:text-blue-600">+</span>'}
         </div>
       </td>`;
     }
 
-    const total = shiftMode === 3 ? (countM + countA + countN) : (countM + countA);
+    const hasNight = (typeof monthHasNightShift === 'function' ? monthHasNightShift() : shiftMode === 3);
+    const total = hasNight ? (countM + countA + countN) : (countM + countA);
 
     const styleM = countM === 0 ? 'bg-rose-100/90 text-rose-600 font-black' : 'text-sky-800 font-bold';
     const styleA = countA === 0 ? 'bg-rose-100/90 text-rose-600 font-black' : 'text-amber-800 font-bold';
@@ -1726,23 +1940,39 @@ function renderMatrix() {
     b += `
       <td class="py-2 px-1 text-center border-l-2 border-slate-300 ${styleM}">${countM}</td>
       <td class="py-2 px-1 text-center border-l border-slate-300 ${styleA}">${countA}</td>
-      ${shiftMode === 3 ? `<td class="py-2 px-1 text-center border-l border-slate-300 ${styleN}">${countN}</td>` : ''}
+      ${hasNight ? `<td class="py-2 px-1 text-center border-l border-slate-300 ${styleN}">${countN}</td>` : ''}
       <td class="py-2 px-1 text-center border-l border-slate-300 ${styleTotal}">${total}</td>
     </tr>`;
   });
   if (tbody) tbody.innerHTML = b;
 
+  // 3. ท้ายตาราง สรุปยอดเวรต่อวัน (Tfoot)
   let f = `<tr>
     <td colspan="3" class="sticky-col-1 bg-slate-100 py-2.5 px-3 font-bold text-slate-800 text-right border-r-2 border-slate-300">
       จำนวนเวรรวมต่อวัน:
     </td>`;
+
   for (let d = 1; d <= daysCount; d++) {
+    const dt = new Date(currentYear, currentMonth, d);
+    const dayOfWeek = dt.getDay();
+    const isSunday = (dayOfWeek === 0);
+    const isSaturday = (dayOfWeek === 6);
+
+    // 👉 พื้นหลังช่องสรุปของเสาร์/อาทิตย์
+    let footBg = 'bg-slate-50';
+    if (isSunday) footBg = 'bg-rose-100/50 text-rose-900';
+    else if (isSaturday) footBg = 'bg-purple-100/50 text-purple-900';
+
+    const dayShiftsAllowed = (typeof getActiveShiftsForDay === 'function')
+      ? getActiveShiftsForDay(d)
+      : ['M', 'A', 'N'];
+
     let dayM = 0, dayA = 0, dayN = 0;
     NURSES.forEach(n => {
       const shifts = (monthState.roster[n.id] && monthState.roster[n.id][d]) || [];
       if (shifts.includes('M')) dayM++;
       if (shifts.includes('A')) dayA++;
-      if (shifts.includes('N') && shiftMode === 3) dayN++;
+      if (shifts.includes('N')) dayN++;
     });
 
     const textDayM = dayM === 0
@@ -1753,19 +1983,21 @@ function renderMatrix() {
       ? `<span class="inline-block px-1 rounded bg-rose-200 text-rose-700 font-black">บ: 0</span>`
       : `<span>บ: ${dayA}</span>`;
 
-    const textDayN = (shiftMode === 3)
+    const textDayN = dayShiftsAllowed.includes('N')
       ? (dayN === 0
         ? `<span class="inline-block px-1 rounded bg-rose-200 text-rose-700 font-black">ด: 0</span>`
         : `<span>ด: ${dayN}</span>`)
       : '';
 
-    f += `<td class="p-1 text-center border-r border-slate-200 text-[10px] bg-slate-50 space-y-0.5">
+    f += `<td class="p-1 text-center border-r border-slate-200 text-[10px] space-y-0.5 ${footBg}">
       <div>${textDayM}</div>
       <div>${textDayA}</div>
-      ${shiftMode === 3 ? `<div>${textDayN}</div>` : ''}
+      ${textDayN ? `<div>${textDayN}</div>` : ''}
     </td>`;
   }
-  f += `<td colspan="${shiftMode === 3 ? 4 : 3}" class="p-2 text-center text-xs text-slate-500 border-l-2 border-slate-300">รวมทั้งแผนก</td></tr>`;
+
+  const hasNight = (typeof monthHasNightShift === 'function' ? monthHasNightShift() : shiftMode === 3);
+  f += `<td colspan="${hasNight ? 4 : 3}" class="p-2 text-center text-xs text-slate-500 border-l-2 border-slate-300">รวมทั้งแผนก</td></tr>`;
   if (tfoot) tfoot.innerHTML = f;
 }
 
@@ -1850,7 +2082,12 @@ function renderExcelView(targetContainerId = 'excelRosterContainer') {
     `;
   }
 
-  const shiftDefs = shiftMode === 2
+  // กำหนดแถวเวรที่ต้องแสดงผล: ถ้าเป็นโหมด 2 เวรจะมีแค่ M, A แต่ถ้าเป็นโหมด 3 เวรหรือ custom ให้แสดงแถว N ด้วย
+  const hasNightInMonth = (typeof monthHasNightShift === 'function')
+    ? monthHasNightShift()
+    : (shiftMode !== 2);
+
+  const shiftDefs = !hasNightInMonth
     ? [{ key: 'M', name: 'เช้า', time: '08.30-16.30', icon: '☀️' }, { key: 'A', name: 'บ่าย', time: '16.30-00.30', icon: '⛅' }]
     : [{ key: 'M', name: 'เช้า', time: '08.30-16.30', icon: '☀️' }, { key: 'A', name: 'บ่าย', time: '16.30-00.30', icon: '⛅' }, { key: 'N', name: 'ดึก', time: '00.30-08.30', icon: '🌙' }];
 
@@ -1859,19 +2096,32 @@ function renderExcelView(targetContainerId = 'excelRosterContainer') {
     let dayTds = '';
     for (let d = 1; d <= daysCount; d++) {
       let cellContent = '-';
-      if (isConfirmed) {
+      let cellBgClass = '';
+
+      // =========================================================================
+      // 👉 ข้อ 2.5: ตรวจสอบเวรรายวัน หากเป็นเวรดึก (N) แต่วันนั้นยังไม่เริ่มมีเวรดึก ให้ปิดช่องเป็นแถบทึบ (-)
+      // =========================================================================
+      const dayShifts = (typeof getActiveShiftsForDay === 'function')
+        ? getActiveShiftsForDay(d)
+        : (shiftMode === 2 ? ['M', 'A'] : ['M', 'A', 'N']);
+
+      if (sDef.key === 'N' && !dayShifts.includes('N')) {
+        cellContent = '<span class="text-slate-300 dark:text-slate-600 font-bold">-</span>';
+        cellBgClass = 'bg-slate-100/70 dark:bg-slate-800/60 select-none';
+      } else if (isConfirmed) {
         const assigned = NURSES.filter(n => (monthState.roster[n.id] && monthState.roster[n.id][d] || []).includes(sDef.key));
         if (assigned.length > 0) {
           cellContent = assigned.map(n => `
-            <span class="nurse-num-badge w-7 h-7 text-xs font-black shadow-xs" style="background-color: ${n.color}; color: ${n.textColor};">
+            <span class="nurse-num-badge w-7 h-7 text-xs font-black shadow-xs inline-flex items-center justify-center rounded-lg" style="background-color: ${n.color}; color: ${n.textColor};">
               ${n.num}
             </span>
           `).join(' ');
         } else {
-          cellContent = '<span class="text-rose-500 text-xs">ว่าง</span>';
+          cellContent = '<span class="text-rose-500 font-bold text-xs">ว่าง</span>';
         }
       }
-      dayTds += `<td class="p-1 text-center border border-slate-300">${cellContent}</td>`;
+
+      dayTds += `<td class="p-1 text-center border border-slate-300 ${cellBgClass}">${cellContent}</td>`;
     }
 
     tbodyRowsHtml += `
@@ -1888,7 +2138,7 @@ function renderExcelView(targetContainerId = 'excelRosterContainer') {
     <div class="glass-card rounded-3xl p-5 md:p-6 border border-white/80 shadow-md">
       <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
         <h3 class="text-lg font-black text-slate-900">${monthTitle}</h3>
-        <button onclick="exportRoster()" class="px-4 py-2 bg-white border border-slate-300 text-xs font-bold rounded-xl shadow-xs">📊 ส่งออก Excel</button>
+        <button onclick="exportRoster()" class="px-4 py-2 bg-white border border-slate-300 text-xs font-bold rounded-xl shadow-xs cursor-pointer hover:bg-slate-50 transition">📊 ส่งออก Excel</button>
       </div>
       <div class="overflow-x-auto rounded-2xl border border-slate-300 shadow-xs mb-4">
         <table class="min-w-full text-xs text-left border-collapse bg-white">
@@ -2088,6 +2338,42 @@ window.setDutyChartMode = function (mode) {
   }
 };
 
+// 1. ฟังก์ชันอัปเดตสีพื้นหลังและการเรืองแสงของการ์ดตามสถานะ Checkbox
+function updateCellEditCardHighlight() {
+  const shiftConfigs = [
+    {
+      cbId: 'cellShiftM',
+      activeClasses: ['border-sky-400', 'dark:border-sky-500', 'bg-sky-100/70', 'dark:bg-sky-950/40', 'ring-2', 'ring-sky-300/40']
+    },
+    {
+      cbId: 'cellShiftA',
+      activeClasses: ['border-amber-400', 'dark:border-amber-500', 'bg-amber-100/70', 'dark:bg-amber-950/40', 'ring-2', 'ring-amber-300/40']
+    },
+    {
+      cbId: 'cellShiftN',
+      activeClasses: ['border-purple-400', 'dark:border-purple-500', 'bg-purple-100/70', 'dark:bg-purple-950/40', 'ring-2', 'ring-purple-300/40']
+    }
+  ];
+
+  shiftConfigs.forEach(({ cbId, activeClasses }) => {
+    const cb = document.getElementById(cbId);
+    const card = cb?.closest('label');
+    if (card && cb) {
+      if (cb.checked) {
+        card.classList.add(...activeClasses);
+      } else {
+        card.classList.remove(...activeClasses);
+      }
+    }
+  });
+}
+
+// 2. ดักจับเหตุการณ์คลิกเปลี่ยน Checkbox ให้การ์ดเรืองแสงทันที
+['cellShiftM', 'cellShiftA', 'cellShiftN'].forEach(id => {
+  document.getElementById(id)?.addEventListener('change', updateCellEditCardHighlight);
+});
+
+// 3. ฟังก์ชัน openCellEditor เดิม (เพิ่ม updateCellEditCardHighlight() ก่อนเปิด Modal)
 window.openCellEditor = function (nurseId, day) {
   if (currentUser && currentUser.role === 'nurse' && monthState && monthState.isConfirmed) {
     window.showToast?.("🔒 ตารางเวรยืนยันแล้ว กรุณาเลือกเวรผ่านระบบ CF");
@@ -2115,6 +2401,27 @@ window.openCellEditor = function (nurseId, day) {
   if (cbM) cbM.checked = currentShifts.includes('M');
   if (cbA) cbA.checked = currentShifts.includes('A');
   if (cbN) cbN.checked = currentShifts.includes('N');
+
+  // =========================================================================
+  // 👉 ข้อ 2.3: ตรวจสอบรายการเวรที่เปิดในวันนั้น หากไม่มีเวรดึก (N) ให้ซ่อนและเคลียร์ค่า
+  // =========================================================================
+  const dayAvailableShifts = (typeof getActiveShiftsForDay === 'function')
+    ? getActiveShiftsForDay(day)
+    : (shiftMode === 2 ? ['M', 'A'] : ['M', 'A', 'N']);
+
+  const cellShiftNCont = document.getElementById('cellShiftNContainer');
+  if (cellShiftNCont) {
+    const hasNightThisDay = dayAvailableShifts.includes('N');
+    cellShiftNCont.style.display = hasNightThisDay ? 'flex' : 'none';
+    if (!hasNightThisDay && cbN) {
+      cbN.checked = false;
+    }
+  }
+
+  // อัปเดตไฮไลต์การ์ดตามค่า Checkbox ทันทีก่อนที่โมดอลจะแสดงผล
+  if (typeof updateCellEditCardHighlight === 'function') {
+    updateCellEditCardHighlight();
+  }
 
   document.getElementById('cellEditModal')?.classList.remove('hidden');
 };
@@ -3524,9 +3831,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('modalNurseLoginForm')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  await loginAsNurse(document.getElementById('modalLoginNurseIdSelect')?.value, document.getElementById('modalLoginNursePin')?.value);
-});
+      e.preventDefault();
+      await loginAsNurse(document.getElementById('modalLoginNurseIdSelect')?.value, document.getElementById('modalLoginNursePin')?.value);
+    });
 
     document.getElementById('modalAdminLoginForm')?.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -3548,6 +3855,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('closeCellEditBtn')?.addEventListener('click', closeCellEditor);
     document.getElementById('saveCellEditBtn')?.addEventListener('click', saveCellEditor);
     document.getElementById('clearCellBtn')?.addEventListener('click', clearCellShifts);
+
+    // =========================================================================
+    // 👉 จุดที่เพิ่ม: ดักจับการคลิก Checkbox ของเวร M, A, N ใน Popup ให้การ์ดเรืองแสงทันที
+    // =========================================================================
+    ['cellShiftM', 'cellShiftA', 'cellShiftN'].forEach(id => {
+      document.getElementById(id)?.addEventListener('change', updateCellEditCardHighlight);
+    });
 
     document.getElementById('closeBookingModalBtn')?.addEventListener('click', closeBookingModal);
     document.getElementById('cancelBookingBtn')?.addEventListener('click', closeBookingModal);
