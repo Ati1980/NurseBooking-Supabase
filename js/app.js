@@ -692,7 +692,7 @@ function triggerFireworks(durationMs = 1800) {
   } catch (err) { }
 }
 
-function loginAsNurse(nurseId, enteredPin) {
+async function loginAsNurse(nurseId, enteredPin) {
   const nurse = NURSES.find(n => n.id === nurseId);
   if (!nurse) { alert('ไม่พบรหัสพยาบาลนี้ในระบบ'); return false; }
   if (enteredPin && enteredPin.trim() !== nurse.pin) { alert(`รหัสผ่าน (PIN) ไม่ถูกต้อง`); return false; }
@@ -702,30 +702,35 @@ function loginAsNurse(nurseId, enteredPin) {
   closeNurseLoginModal();
   updateAuthUI();
 
-  const syncKey = `nurse_synced_shifts_${nurse.id}_${currentYear}_${currentMonth}`;
-  const savedSync = localStorage.getItem(syncKey);
-  if (savedSync) {
-    try {
-      syncedNurseShiftsSnapshot = JSON.parse(savedSync);
-    } catch (e) {
-      syncedNurseShiftsSnapshot = JSON.parse(JSON.stringify((monthState.roster && monthState.roster[nurse.id]) || {}));
-    }
-  } else {
-    syncedNurseShiftsSnapshot = JSON.parse(JSON.stringify((monthState.roster && monthState.roster[nurse.id]) || {}));
-    localStorage.setItem(syncKey, JSON.stringify(syncedNurseShiftsSnapshot));
+  // 1. ดึงข้อมูลจริงล่าสุดจาก Supabase ก่อน เพื่อให้ได้ฐานข้อมูลที่ถูกต้องที่สุด
+  if (typeof window.fetchRosterFromSheet === 'function') {
+    await window.fetchRosterFromSheet(false);
   }
 
+  // 2. บันทึก Snapshot ล่าสุดจาก Supabase ไว้เปรียบเทียบหา Pending Changes
+  const serverShifts = (monthState.roster && monthState.roster[nurse.id]) || {};
+  syncedNurseShiftsSnapshot = JSON.parse(JSON.stringify(serverShifts));
+  localStorage.setItem(`nurse_synced_shifts_${nurse.id}_${currentYear}_${currentMonth}`, JSON.stringify(syncedNurseShiftsSnapshot));
+
+  // 3. ตรวจสอบว่ามี Draft ที่ User เคยเลือกค้างไว้หรือไม่
   const draftKey = `nurse_draft_${nurse.id}_${currentYear}_${currentMonth}`;
   const savedDraft = localStorage.getItem(draftKey);
+
   if (savedDraft) {
     try {
+      // ✅ กรณีมี Draft ค้าง: นำ Draft มาใส่เพื่อให้ User ทำต่อได้
       if (!monthState.roster) monthState.roster = {};
       monthState.roster[nurse.id] = JSON.parse(savedDraft);
     } catch (e) {
       console.error('Error loading nurse draft:', e);
     }
+  } else {
+    // ✅ กรณีเข้าระบบครั้งแรก (ไม่มี Draft): ให้ยึดตามฐานข้อมูล Supabase เป็นหลัก ไม่เอาค่ามั่วในเครื่องมาแสดง
+    if (!monthState.roster) monthState.roster = {};
+    monthState.roster[nurse.id] = JSON.parse(JSON.stringify(serverShifts));
   }
 
+  // 4. กรณีที่คลิกเลือกเวรจากหน้าปฏิทินก่อน Login
   if (pendingShiftSelection) {
     const { day, shift } = pendingShiftSelection;
     if (!monthState.roster[nurse.id]) monthState.roster[nurse.id] = {};
@@ -737,6 +742,8 @@ function loginAsNurse(nurseId, enteredPin) {
     pendingShiftSelection = null;
   }
 
+  // 5. บันทึกสถานะและเรนเดอร์หน้าจอ
+  saveMonthState();
   renderPublicDashboard();
   switchView('personal');
   updatePendingShiftBadgeUI();
@@ -3516,10 +3523,10 @@ document.addEventListener('DOMContentLoaded', () => {
       onMonthYearChanged();
     });
 
-    document.getElementById('modalNurseLoginForm')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      loginAsNurse(document.getElementById('modalLoginNurseIdSelect')?.value, document.getElementById('modalLoginNursePin')?.value);
-    });
+    document.getElementById('modalNurseLoginForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  await loginAsNurse(document.getElementById('modalLoginNurseIdSelect')?.value, document.getElementById('modalLoginNursePin')?.value);
+});
 
     document.getElementById('modalAdminLoginForm')?.addEventListener('submit', (e) => {
       e.preventDefault();
